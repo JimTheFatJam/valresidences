@@ -1,0 +1,209 @@
+/* Sign-up popup container */
+.sign-up-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    width: 90%;
+    /* Adjusted for responsiveness */
+    max-width: 700px;
+    /* Ensures it doesn't get too large */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.sign-up-password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.sign-up-password-container input {
+    width: 100%;
+    padding-right: 40px;
+}
+
+.sign-up-password-container img {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.sign-up-popup form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Container for inputs */
+.signup-body {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+}
+
+/* Left and right sections */
+.signup-left,
+.signup-right {
+    width: 47%;
+}
+
+.signup-password-requirements {
+    font-size: 0.8rem;
+    color: #AEAEAE;
+    margin-bottom: 1.2rem;
+}
+
+.signup-password-requirements p {
+    position: relative;
+    padding-left: 20px;
+    /* Space for the circle */
+}
+
+.signup-password-requirements p::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 7px;
+    height: 7px;
+    background-color: #AEAEAE;
+    /* Default gray */
+    border-radius: 50%;
+}
+
+/* Green when requirement is met */
+.signup-password-requirements p.valid {
+    color: #28A745;
+}
+
+.signup-password-requirements p.valid::before {
+    background-color: #28A745;
+}
+
+/* Red when requirement is not met */
+.signup-password-requirements p.invalid {
+    color: #DC3545;
+}
+
+.signup-password-requirements p.invalid::before {
+    background-color: #DC3545;
+}
+
+.sign-up-popup input {
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+    height: 2.5rem;
+    font-family: "Sen", serif;
+    font-weight: 400;
+    font-size: 0.9rem;
+    border: none;
+    outline: 1px solid #AEAEAE;
+}
+
+.sign-up-popup input::placeholder {
+    font-family: "Sen", serif;
+    font-weight: 400;
+    color: #AEAEAE;
+}
+
+/* Center the heading */
+.sign-up-popup h2 {
+    text-align: center;
+    margin-bottom: 1.3rem;
+}
+
+/* Button container to keep it at the bottom */
+.signup-button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.sign-up-popup button {
+    width: 60%;
+    height: 2.5rem;
+    background: #323232;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    transition: 300ms ease;
+}
+
+.sign-up-popup button:hover {
+    background-color: #292929;
+}
+
+.sign-up-popup button:active {
+    background-color: #202020;
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+input:disabled {
+    background-color: #f2f2f2;
+    cursor: not-allowed;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .signup-body {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .signup-left,
+    .signup-right {
+        width: 100%;
+    }
+
+    .sign-up-popup {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .sign-up-popup h2 {
+        font-size: 1.5rem;
+    }
+
+    .sign-up-popup button {
+        width: 80%;
+    }
+}
+
+@media (max-width: 480px) {
+    .sign-up-popup {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .sign-up-popup h2 {
+        font-size: 1.2rem;
+    }
+
+    .sign-up-popup input {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+
+    .sign-up-popup button {
+        width: 100%;
+    }
+}

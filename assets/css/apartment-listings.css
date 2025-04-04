@@ -1,0 +1,116 @@
+.apartment-listings-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    justify-content: center;
+    padding: 0 6%;
+}
+
+.apartment-box {
+    width: 100%;
+    max-width: 350px;
+    height: 370px;
+    background-color: #E8E8E8;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    margin: auto;
+}
+
+.apartment-image-container {
+    height: 40%;
+    overflow: hidden;
+}
+
+.apartment-text {
+    padding: 20px;
+    height: 41%;
+}
+
+.apartment-text h3 {
+    margin: 0 0 10px;
+    font-size: 1.2rem;
+}
+
+.apartment-text p {
+    margin: 5px 0;
+    font-size: 0.8rem;
+}
+
+.apartment-buttons-container {
+    height: 19%;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.apartment-buttons-container button {
+    background-color: #323232;
+    border: none;
+    height: 35px;
+    padding: 0px 42px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 1rem;
+    color: white;
+}
+
+.apartment-buttons-container button:hover {
+    background-color: #292929;
+}
+
+.apartment-buttons-container button:active {
+    background-color: #202020;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .apartment-listings-container {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .apartment-box {
+        max-width: 320px;
+    }
+}
+
+@media (max-width: 768px) {
+    .apartment-listings-container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .apartment-box {
+        max-width: 300px;
+    }
+
+    .apartment-buttons-container button {
+        padding: 0px 30px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .apartment-listings-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .apartment-box {
+        max-width: 100%;
+    }
+
+    .apartment-buttons-container {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .apartment-buttons-container button {
+        width: 80%;
+        padding: 10px 0;
+        font-size: 0.9rem;
+    }
+}

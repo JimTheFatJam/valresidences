@@ -1,0 +1,103 @@
+/* Vacancy Announcement popup container */
+.vacancy-announcement-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    width: 90%;
+    max-width: 700px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+/* Close button */
+.vacancy-announcement-popup .close_button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+/* Form styling */
+.vacancy-announcement-popup form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Input fields */
+.vacancy-announcement-popup input,
+.vacancy-announcement-popup textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    font-family: "Sen", serif;
+    font-weight: 400;
+    font-size: 0.9rem;
+    border: none;
+    outline: 1px solid #AEAEAE;
+    height: 2.5rem;
+}
+
+.vacancy-announcement-popup textarea {
+    resize: vertical;
+    height: 5rem;
+}
+
+.vacancy-announcement-popup input::placeholder,
+.vacancy-announcement-popup textarea::placeholder {
+    font-family: "Sen", serif;
+    font-weight: 400;
+    color: #AEAEAE;
+}
+
+/* Center the heading */
+.vacancy-announcement-popup h2 {
+    text-align: center;
+    margin-bottom: 1.3rem;
+}
+
+/* Button container */
+.vacancy-button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.vacancy-announcement-popup button {
+    width: 60%;
+    height: 2.5rem;
+    background: #323232;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    transition: 300ms ease;
+}
+
+.vacancy-announcement-popup button:hover {
+    background-color: #292929;
+}
+
+.vacancy-announcement-popup button:active {
+    background-color: #202020;
+}
+
+/* Disabled styles */
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+input:disabled,
+textarea:disabled {
+    background-color: #f2f2f2;
+    cursor: not-allowed;
+}

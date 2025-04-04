@@ -1,0 +1,102 @@
+<div class="unit-slide">
+    <div class="unit-information">
+        <div class="unit-information-content">
+            <h3>UNIT ${apartmentUnit.unit_number}</h3>
+            <br>
+            <p>${apartmentUnit.total_floors} Floors</p>
+            <p>${apartmentUnit.living_area} Sqm living area</p>
+            <p>${apartmentUnit.bedroom_count} Bedrooms</p>
+            <p>${apartmentUnit.tb_count} T&B</p>
+            <p>${apartmentUnit.furnished_status}</p>
+            <p>${apartmentUnit.balcony === 1 ? "With balcony" : "No balcony"}</p>
+            <p>${apartmentUnit.parking_space === 1 ? "With parking" : "No parking"}</p>
+            <p>${apartmentUnit.pet_friendly === 1 ? "Pet friendly" : " No pets allowed"}</p>
+            <br>
+            <p>Lease Term: ${apartmentUnit.lease_term}</p>
+            <p>Rent Price: $${apartmentUnit.rent_price}</p>
+            <p>${apartmentUnit.month_advance} Month advance</p>
+            <p>${apartmentUnit.month_deposit} Month deposit</p>
+            <br>
+            <div class="unit-information-status ${apartmentUnit.availability_status.toLowerCase()}">
+                <p>STATUS: ${apartmentUnit.availability_status.toUpperCase()}</p>
+            </div>
+        </div>
+        <div class="unit-information-buttons">
+            <button class="plus-jakarta-sans">INQUIRE UNIT</button>
+            <button class="plus-jakarta-sans">APPLY NOW</button>
+        </div>
+    </div>
+    <div class="unit-images">
+        <img src="unit-image.jpg" alt="Apartment Image">
+    </div>
+</div>
+
+
+
+
+
+
+
+<div class="main-content">
+    <div class="apartment-units-container" id="apartment-units-container">
+        <div class="units-slideshow-container">
+            <div class="unit-card-slider" id="unit-card-slider"></div>
+        </div>
+        <div class="unit-arrows">
+            <button class="prev" id="prev-unit">❮</button>
+            <button class="next" id="next-unit">❯</button>
+        </div>
+        <div class="unit-dots">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="slideshow-container">
+    <div class="slider">
+        <div class="slide"><img src="../assets/images/index_slideshow_images/image1.jpg" alt="Image 1"></div>
+        <div class="slide"><img src="../assets/images/index_slideshow_images/image2.jpg" alt="Image 2"></div>
+        <div class="slide"><img src="../assets/images/index_slideshow_images/image3.jpg" alt="Image 3"></div>
+        <div class="slide"><img src="../assets/images/index_slideshow_images/image4.jpg" alt="Image 3"></div>
+    </div>
+    <div class="slide-gradient"></div>
+    <div class="arrows">
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+    </div>
+    <div class="dots">
+    </div>
+</div>
+
+
+
+
+<!-- Vacancy Announcement Popup -->
+<div id="vacancyAnnouncementPopup" class="vacancy-announcement-popup">
+    <img class="close_button" src="../assets/icons/close_button.svg" onclick="closeVacancyAnnouncementPopup()" alt="close_button">
+    <h2 class="plus-jakarta-sans-bold">SEND VACANCY ANNOUNCEMENT</h2>
+    <form id="vacancyAnnouncementForm">
+        <label for="vacancySubject">Subject</label>
+        <input type="text" id="vacancySubject" placeholder="Enter subject" required>
+
+        <label for="vacancyMessage">Message</label>
+        <textarea id="vacancyMessage" placeholder="Enter your message" required></textarea>
+
+        <div class="vacancy-button-container">
+            <button class="plus-jakarta-sans" type="submit" id="submit-vacancy">SEND</button>
+        </div>
+    </form>
+</div>

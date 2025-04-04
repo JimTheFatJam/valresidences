@@ -1,0 +1,199 @@
+/* Dark background when login login-popup is active */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    /* Dark transparent background */
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+/* Login-popup container */
+.login-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    width: 400px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+/* Close button */
+.close_button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+/* Form styling */
+.login-popup form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-popup input {
+    margin: 10px 0;
+    padding: 8px;
+    width: 100%;
+    height: 2.5rem;
+    font-family: "Sen", serif;
+    font-weight: 400;
+    font-size: 0.9rem;
+    border: none;
+    outline: 1px solid #AEAEAE;
+}
+
+.login-popup input::placeholder {
+    font-family: "Sen", serif;
+    font-weight: 400;
+    color: #AEAEAE;
+}
+
+.login-popup h2 {
+    text-align: center;
+    margin-bottom: 1.3rem;
+}
+
+.login-popup button {
+    height: 2.5rem;
+    background: #323232;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 300ms ease;
+}
+
+.login-popup button:hover {
+    background-color: #292929;
+}
+
+.login-popup button:active {
+    background-color: #202020;
+}
+
+.forgot-password {
+    display: block;
+    text-align: right;
+    margin: 5px 0 15px;
+    font-size: 0.8rem;
+    color: black;
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+.signup-text {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.8rem;
+}
+
+.signup-text a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.signup-text a:hover {
+    text-decoration: underline;
+}
+
+.login-password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.login-password-container input {
+    width: 100%;
+    padding-right: 40px;
+}
+
+.login-password-container img {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+/* Responsive Login Popup */
+@media (max-width: 768px) {
+    .login-popup {
+        width: 80%;
+        /* Adjust width to be more flexible */
+        padding: 15px;
+        /* Reduce padding for smaller screens */
+    }
+
+    .login-popup h2 {
+        font-size: 1.5rem;
+        /* Adjust heading size */
+    }
+
+    .login-popup input {
+        font-size: 0.9rem;
+        /* Slightly smaller input text */
+    }
+
+    .login-popup button {
+        font-size: 0.9rem;
+        /* Adjust button font size */
+        padding: 8px;
+    }
+
+    .login-password-container img {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-popup {
+        width: 90%;
+        /* Increase width for mobile */
+        padding: 10px;
+        /* Further reduce padding */
+    }
+
+    .login-popup h2 {
+        font-size: 1.3rem;
+    }
+
+    .login-popup input {
+        font-size: 0.85rem;
+    }
+
+    .login-popup button {
+        font-size: 0.85rem;
+        padding: 7px;
+    }
+
+    .forgot-password {
+        font-size: 0.75rem;
+        /* Reduce font size */
+    }
+
+    .signup-text {
+        font-size: 0.75rem;
+        /* Adjust text size */
+    }
+}

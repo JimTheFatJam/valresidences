@@ -1,0 +1,64 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Sen", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.main-content {
+    padding-top: 4.3rem;
+    padding-bottom: 4.3rem;
+    background-color: white;
+}
+
+.logo-font {
+    font-family: "Libre Caslon Text", serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.scroll-button,
+.plus-jakarta-sans {
+    font-family: "Plus Jakarta Sans", serif;
+    font-optical-sizing: auto;
+    font-weight: 450;
+    font-style: normal;
+}
+
+.plus-jakarta-sans-bold {
+    font-family: "Plus Jakarta Sans", serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.error-message {
+    color: #DC3545;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.error-border {
+    outline: 1px solid #DC3545 !important;
+}
+
+.spinner {
+    width: 15px;
+    height: 15px;
+    border: 2px solid transparent;
+    border-top: 2px solid white;
+    border-radius: 50%;
+    display: inline-block;
+    animation: spin 0.6s linear infinite;
+    vertical-align: middle;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
