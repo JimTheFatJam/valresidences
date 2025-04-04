@@ -1,0 +1,70 @@
+<!-- Dark Overlay for Login Popup -->
+<div id="popupOverlay" class="overlay"></div>
+
+<!-- Login Popup -->
+<div id="loginPopup" class="login-popup">
+    <img class="close_button" src="../assets/icons/close_button.svg" onclick="closeLoginPopup()"
+        alt="close_button">
+    <h2 class="plus-jakarta-sans-bold">LOGIN</h2>
+    <form>
+        <label for="loginEmail" id="loginEmailLabel">Email</label>
+        <input type="text" id="loginEmail" placeholder="Enter your email" required>
+
+        <label for="loginPassword" id="loginPasswordLabel">Password</label>
+        <div class="login-password-container">
+            <input type="password" id="loginPassword" placeholder="Enter your password" required>
+            <img src="../assets/icons/eye_icon_crossed.svg" id="toggleLoginPassword" alt="Toggle Password">
+        </div>
+
+        <a href="#" class="forgot-password">Forgot password?</a>
+
+        <button class="plus-jakarta-sans" type="submit" id="submit-login">LOGIN</button>
+
+        <p class="signup-text">Not registered? <a href="#"
+                onclick="closeLoginPopup(); openSignUpPopup(); return false;">Sign up now</a></p>
+    </form>
+</div>
+
+<!-- Sign Up Popup -->
+<div id="signUpPopup" class="sign-up-popup">
+    <img class="close_button" src="../assets/icons/close_button.svg" onclick="closeSignUpPopup()"
+        alt="close_button">
+    <h2 class="plus-jakarta-sans-bold">SIGN UP</h2>
+    <form id="registerForm">
+        <div class="signup-body">
+            <div class="signup-left">
+                <label for="firstName" id="firstNameLabel">First Name</label>
+                <input type="text" id="firstName" placeholder="Enter your first name" required>
+
+                <label for="lastName" id="lastNameLabel">Last Name</label>
+                <input type="text" id="lastName" placeholder="Enter your last name" required>
+
+                <label for="registerEmail" id="registerEmailLabel">Email</label>
+                <input type="email" id="registerEmail" placeholder="Enter your email" required>
+            </div>
+
+            <div class="signup-right">
+                <label for="signUpPassword" id="signUpPasswordLabel">Password</label>
+                <div class="sign-up-password-container">
+                    <input type="password" id="signUpPassword" placeholder="Enter your password" required>
+                    <img src="../assets/icons/eye_icon_crossed.svg" id="toggleSignUpPassword"
+                        alt="Toggle Password">
+                </div>
+
+                <div class="signup-password-requirements">
+                    <p>At least 8 characters</p>
+                    <p>At least one small letter</p>
+                    <p>At least one capital letter</p>
+                    <p>At least one number or symbol</p>
+                </div>
+
+                <label for="confirmPassword" id="confirmPasswordLabel">Confirm Password</label>
+                <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+            </div>
+        </div>
+
+        <div class="signup-button-container">
+            <button class="plus-jakarta-sans" type="submit" id="submit-register">SUBMIT</button>
+        </div>
+    </form>
+</div>

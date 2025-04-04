@@ -1,0 +1,174 @@
+/* Dashboard */
+
+.dashboard-container {
+    width: 80%;
+    display: flex;
+    gap: 1.2rem;
+}
+
+.unitsOccupancyStatus {
+    padding: 1rem;
+    flex: 1;
+    height: 16rem;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.circle-status {
+    width: 7rem;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    align-self: center;
+}
+
+.inner-circle {
+    width: 6rem;
+    aspect-ratio: 1 / 1;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    color: black;
+}
+
+.circle-status h2 {
+    margin: 0;
+    padding: 0;
+    font-size: 2rem;
+}
+
+.circle-status p {
+    padding: 0;
+    margin: 0;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.bottom-text {
+    width: 100%;
+    align-self: flex-start;
+}
+
+.bottom-text p {
+    font-size: 1rem;
+    text-align: left;
+    padding: 0;
+    margin-top: 0.1rem;
+}
+
+.right-dashboard {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.tenantApplicationCount,
+.maintenanceRequestCount {
+    height: 7.4rem;
+    background-color: #ffffff;
+}
+
+/*MANAGE LISTINGS*/
+
+.manage-listings {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background: #CBCBCB;
+    padding: 1rem 1rem;
+    gap: 1rem;
+    height: auto;
+}
+
+.apartment-box {
+    background-color: white;
+    border: 1px solid black;
+    width: 25%;
+}
+
+.apartment-text {
+    padding: 1rem;
+    height: 41%;
+}
+
+.apartment-text h3 {
+    margin: 0 0 10px;
+    font-size: 1.2rem;
+}
+
+.apartment-text p {
+    margin: 5px 0;
+    font-size: 0.8rem;
+}
+
+.function-buttons-container {
+    height: 19%;
+    width: 100%;
+    padding: 1rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.function-buttons-container button {
+    background-color: #323232;
+    border: none;
+    height: 2rem;
+    padding: 0px 3.5rem;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 1rem;
+    color: white;
+}
+
+.function-buttons-container button:hover {
+    background-color: #292929;
+}
+
+.function-buttons-container button:active {
+    background-color: #202020;
+}
+
+/*MANAGE TENANTS*/
+
+.manage-tenants {
+    display: flex;
+    justify-content: space-evenly;
+    background: #CBCBCB;
+    padding: 1rem 0;
+    height: auto;
+}
+
+/*SEND ANNOUNCEMENTS*/
+
+.send-announcements {
+    display: flex;
+    justify-content: space-evenly;
+    background: #CBCBCB;
+    padding: 1rem 0;
+    height: auto;
+}
+
+.send-announcements button {
+    padding: 0.7rem 1.5rem;
+    width: 46%;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    background: white;
+    color: black;
+}

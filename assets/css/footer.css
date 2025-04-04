@@ -1,0 +1,192 @@
+/* Base Footer Styling */
+.footer {
+    background: #323232;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 30px;
+    text-align: left; /* Keep text left-aligned */
+}
+
+/* Footer Sections */
+.footer > div {
+    flex: 1;
+    padding: 20px;
+    min-width: 280px;
+    position: relative;
+}
+
+/* Vertical dividers for large screens */
+.footer > div:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 85%;
+    background-color: #606060;
+}
+
+/* Contacts Section */
+.contacts-details .logo-font {
+    font-size: 2rem;
+    margin-bottom: 25px; /* Increased spacing */
+}
+
+.contacts-content {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.contacts-icon img {
+    width: 30px;
+    height: 30px;
+    margin-right: 2rem;
+}
+
+.contacts-text {
+    flex: 1;
+}
+
+/* Social Media Section */
+.socials-details h3 {
+    font-size: 1.3rem;
+    margin-bottom: 30px; /* Increased spacing */
+}
+
+.socials-details .socials-icons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Default: 2x2 grid */
+    gap: 15px;
+    justify-content: start; /* Align to left */
+}
+
+.socials-icons img {
+    width: 40px;
+    height: 40px;
+}
+
+/* Vacancy Alerts Section */
+.vacancy-alerts h3 {
+    font-size: 1.3rem;
+    margin-bottom: 30px; /* Increased spacing */
+}
+
+.vacancy-alerts p {
+    margin-bottom: 10px; /* Increased spacing */
+}
+
+.vacancy-alerts form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Keep left alignment */
+}
+
+.vacancy-alerts input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    border: none;
+    outline: none;
+}
+
+.vacancy-alerts input[type="email"]::placeholder {
+    color: #AEAEAE;
+}
+
+.vacancy-alerts input[type="submit"] {
+    background-color: #606060;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    color: white;
+    width: 100%;
+    margin-top: 5px;
+    transition: background 0.3s;
+}
+
+.vacancy-alerts input[type="submit"]:hover {
+    background-color: #505050;
+}
+
+.vacancy-alerts input[type="submit"]:active {
+    background-color: #404040;
+}
+
+/* 🔹 Responsive Adjustments */
+@media (max-width: 1024px) {
+    .footer {
+        flex-direction: column;
+    }
+
+    .footer > div {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .footer > div:not(:last-child)::after {
+        display: none;
+    }
+
+    .footer > div:not(:last-child) {
+        border-bottom: 1px solid #606060;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+    }
+
+    .contacts-content {
+        justify-content: flex-start;
+    }
+
+    .contacts-icon img {
+        width: 25px;
+        height: 25px;
+    }
+
+    /* Keep text left-aligned on all sections */
+    .footer > div,
+    .contacts-details,
+    .vacancy-alerts form {
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    /* Social Media Icons - Switch to 1x4 grid on mobile */
+    .socials-details .socials-icons {
+        grid-template-columns: repeat(2, 1fr); /* Default: 2x2 grid */
+    }
+}
+
+@media (max-width: 600px) {
+    .footer {
+        padding: 15px;
+    }
+
+    .contacts-details .logo-font {
+        font-size: 1.5rem;
+    }
+
+    .contacts-icon img {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* Social Media Icons - Now in 1x4 grid */
+    .socials-details .socials-icons {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .socials-icons img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .vacancy-alerts input[type="email"],
+    .vacancy-alerts input[type="submit"] {
+        width: 100%;
+        font-size: 0.9rem;
+    }
+}

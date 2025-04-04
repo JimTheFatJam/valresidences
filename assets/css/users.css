@@ -1,0 +1,116 @@
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.content-container {
+    display: flex;
+}
+
+/* Left Sidebar */
+.left-content-container {
+    width: auto;
+    height: 100vh;
+    background-color: #606060;
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+/* Sidebar Logo */
+.user-navigation-logo {
+    height: 80px;
+    width: 190px;
+    background-color: white;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-navigation-logo button {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    border: none;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.user-navigation-logo button:hover {
+    background-color: #E8E8E8;
+}
+
+.user-navigation-logo button:active {
+    background-color: #BFBFBF;
+}
+
+.user-navigation-logo span:first-child {
+    font-size: 1.6rem;
+}
+
+.user-navigation-logo span:last-child {
+    font-size: 1rem;
+}
+
+.user-navigation {
+    width: 100%;
+}
+
+.user-navigation button {
+    background: #606060;
+    border: none;
+    color: white;
+    width: 100%;
+    padding: 15px 15px;
+    text-align: left;
+    cursor: pointer;
+    margin-bottom: 0.3rem;
+    transition: background 0.3s;
+}
+
+.user-navigation button:hover {
+    background-color: #505050;
+}
+
+.user-navigation button:ative {
+    background-color: #404040;
+}
+
+/* Right Section */
+.right-content-container {
+    flex-grow: 1;
+    overflow-y: auto; /* Same as sidebar width */
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+}
+
+.management-section {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+}
+
+.section-header {
+    background: #474747;
+    color: white;
+    padding: 0.8rem;
+    font-size: 1.2rem;
+    text-align: left;
+}

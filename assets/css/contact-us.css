@@ -1,0 +1,142 @@
+.contact-container {
+    padding: 4.3rem;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-box {
+    width: 80%;
+    max-width: 1000px;
+    height: auto;
+    background: #E8E8E8;
+    display: flex;
+}
+
+/* Contact Information (Left Side) */
+.contact-information {
+    width: 30%;
+    padding: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+}
+
+.contact-information::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 90%;
+    background-color: #ccc;
+}
+
+.contact-information-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.contact-information-content img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 0.5rem;
+}
+
+.contact-information-content h3 {
+    font-size: 1rem;
+    margin: 0;
+    font-weight: bold;
+}
+
+.contact-information-content p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Send Message Form (Right Side) */
+.send-message {
+    width: 70%;
+    padding: 1.8rem;
+}
+
+.send-message h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+}
+
+.send-message form {
+    display: flex;
+    flex-direction: column;
+}
+
+.send-message label {
+    margin: 0;
+    color: #555;
+}
+
+.send-message input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    margin-bottom: 1rem;
+    border: none;
+    outline: none;
+    font-size: 0.9rem;
+}
+
+#messageBody {
+    width: 100%;
+    height: 8rem;
+    padding: 10px;
+    margin: 10px 0;
+    margin-bottom: 1rem;
+    border: none;
+    outline: none;
+    font-size: 0.9rem;
+    resize: vertical;
+}
+
+.send-message input::placeholder,
+#messageBody::placeholder {
+    color: #AEAEAE;
+}
+
+.send-message button {
+    height: 2.4rem;
+    background: #606060;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 300ms ease;
+}
+
+.send-message button:hover {
+    background-color: #505050;
+}
+
+.send-message button:active {
+    background-color: #404040;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contact-box {
+        flex-direction: column;
+    }
+
+    .contact-information,
+    .send-message {
+        width: 100%;
+    }
+}

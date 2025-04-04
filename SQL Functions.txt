@@ -1,0 +1,83 @@
+INSERT INTO apartment_listings (
+    address, subdivision_address, apartment_type, total_units, 
+    units_occupied, units_vacant, map_address, date_listed
+) VALUES (
+    'Corona del Mar, Pooc, Talisay City, Cebu', 'Ph. 4, Lot 4, Block 9', 'Triplex', 3, 
+    3, 0, 'https://maps.app.goo.gl/u8AjSSVH3mLhbn9W8', CURRENT_TIMESTAMP
+);
+
+ALTER TABLE apartment_listings AUTO_INCREMENT = 1;
+
+
+INSERT INTO subscriber_emails (
+    email, created_at
+) VALUES (
+    'jemuel.jv.valencia@gmail.com', CURRENT_TIMESTAMP
+);
+
+ALTER TABLE subscriber_emails AUTO_INCREMENT = 1;
+
+
+INSERT INTO login_users (user_email, hashed_password, user_status) 
+VALUES ('jemuel.jv.valencia@gmail.com', 'QW12erty', 'admin');
+
+
+
+
+
+
+INSERT INTO apartment_units (
+    apartment_id, unit_number, total_floors, living_area, bedroom_count, tb_count, 
+    balcony, parking_space, pet_friendly, lease_term, rent_price, deposit_amount, 
+    availability_status, furnished_status, created_at, updated_at
+) VALUES (
+    1, -- Apartment ID (Change this based on the correct apartment)
+    1, -- Unit Number
+    2, -- Total Floors
+    75.5, -- Living Area in sqm
+    3, -- Number of Bedrooms
+    2, -- Number of Bathrooms
+    1, -- Balcony (1 for Yes, 0 for No)
+    1, -- Parking Space (1 for Yes, 0 for No)
+    1, -- Pet Friendly (1 for Yes, 0 for No)
+    '1 year', -- Lease Term
+    1500.00, -- Rent Price in USD
+    1500.00, -- Deposit Amount in USD
+    'Available', -- Availability Status (e.g., Available, Rented, Pending)
+    'Furnished', -- Furnished Status (e.g., Furnished, Unfurnished, Semi-Furnished)
+    NOW(), -- Created At (Current Timestamp)
+    NOW() -- Updated At (Current Timestamp)
+);
+
+
+INSERT INTO apartment_images (apartment_id, file_link)
+VALUES (1, 'uploads/apartment_images/apartment1.1.jpg'),
+       (2, 'uploads/apartment_images/apartment2.1.jpg'),
+       (2, 'uploads/apartment_images/apartment2.2.jpg'),
+       (3, 'uploads/apartment_images/apartment3.1.jpg'),
+       (3, 'uploads/apartment_images/apartment3.2.jpg'),
+       (3, 'uploads/apartment_images/apartment3.3.jpg'),
+       (4, 'uploads/apartment_images/apartment4.1.jpg'),
+       (4, 'uploads/apartment_images/apartment4.2.jpg'),
+       (4, 'uploads/apartment_images/apartment4.3.jpg'),
+       (4, 'uploads/apartment_images/apartment4.4.jpg');
+
+INSERT INTO unit_images (apartment_id, unit_number, file_link)
+VALUES 
+    (1, 1, 'uploads/unit_images/apartment1unit1.1.jpg'),
+    (1, 2, 'uploads/unit_images/apartment1unit2.1.jpg'),
+    (1, 2, 'uploads/unit_images/apartment1unit2.2.jpg'),
+    (1, 3, 'uploads/unit_images/apartment1unit3.1.jpg'),
+    (1, 3, 'uploads/unit_images/apartment1unit3.2.jpg'),
+    (1, 3, 'uploads/unit_images/apartment1unit3.3.jpg');
+
+INSERT INTO unit_images (apartment_id, unit_number, file_link)
+VALUES 
+    (1, 4, 'uploads/unit_images/apartment1unit4.1.jpg'),
+    (1, 4, 'uploads/unit_images/apartment1unit4.2.jpg'),
+    (1, 4, 'uploads/unit_images/apartment1unit4.3.jpg'),
+    (1, 4, 'uploads/unit_images/apartment1unit4.4.jpg'),
+    (1, 4, 'uploads/unit_images/apartment1unit4.5.jpg');
+
+
+
