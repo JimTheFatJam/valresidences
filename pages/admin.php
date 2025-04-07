@@ -171,7 +171,8 @@
                         <h5 class="plus-jakarta-sans">MANAGE LISTINGS</h5>
                     </div>
                     <div class="manage-listings" id="manage-listings">
-                        
+                        <div class="manage-apartments" id="manage-apartments"></div>
+                        <div class="manage-units" id="manage-units"></div>
                     </div>
                 </div>
 

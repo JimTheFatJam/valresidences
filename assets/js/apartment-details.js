@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 if (images.length > 0) {
                     images.forEach(image => {
                         const img = document.createElement("img");
-                        img.src = `../${image}`; // ✅ Fixed path
+                        img.src = `../${image}`; // Fixed path
                         img.alt = `Unit ${unit.unit_number}`;
                         img.style.width = "100%";
                         img.style.height = "auto";
