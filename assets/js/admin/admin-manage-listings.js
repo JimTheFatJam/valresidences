@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch("../backend/fetch-apartments.php")
         .then(response => response.json())
         .then(async apartments => {
-            let listingsContainer = document.getElementById("manage-apartments");
+            let listingsContainer = document.getElementById("manage-listings");
             listingsContainer.innerHTML = "";
 
             for (const apartment of apartments) {

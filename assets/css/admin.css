@@ -84,22 +84,18 @@
 
 .manage-listings {
     display: flex;
-    justify-content: left;
+    flex-direction: column;
+    justify-content: space-evenly;
     background: #CBCBCB;
-    padding: 1rem 1rem 0;
-    height: auto;
-}
-
-.manage-apartments {
-    width: 25%;
+    padding: 1rem 1rem;
+    gap: 1rem;
     height: auto;
 }
 
 .apartment-box {
     background-color: white;
     border: 1px solid black;
-    width: 100%;
-    margin-bottom: 1rem;
+    width: 25%;
 }
 
 .apartment-text {
@@ -145,11 +141,6 @@
 
 .function-buttons-container button:active {
     background-color: #202020;
-}
-
-.manage-units {
-    width: 75%;
-    height: auto;
 }
 
 /*MANAGE TENANTS*/
