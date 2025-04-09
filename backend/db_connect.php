@@ -1,11 +1,11 @@
 <?php
 $servername = "localhost";
 
-$username = "s11600135_val_residences";
-$password = "QW12erty";
+//$username = "s11600135_val_residences";
+//$password = "QW12erty";
 
-//$username = "root";
-//$password = "";
+$username = "root";
+$password = "";
 
 $dbname = "s11600135_val_residences"; // Your database name
 
