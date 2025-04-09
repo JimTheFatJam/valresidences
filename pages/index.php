@@ -29,7 +29,7 @@
         include_once("included-files/landing-section.html");
         ?>
         <div class="landing-content">
-            <span class="logo-font">Val Residences</span>
+            <span class="logo-font">Git Test!</span>
             <p>Wake up to refreshing mornings in our apartments at Corona del Mar, a Spanish Mediterranean-inspired
                 seaside community in Cebu.</p>
             <button class="scroll-button" data-target="#main-content">VIEW LISTINGS</button>
