@@ -1,13 +1,14 @@
 <?php
 $servername = "localhost";
 
-if ($_SERVER['SERVER_NAME'] == 'localhost') {
+if ($_SERVER['SERVER_NAME'] == 'valresidences.com') {
     $username = "root";
     $password = "";
 } else {
     $username = "s11600135_val_residences";
     $password = "QW12erty";
 }
+
 
 $dbname = "s11600135_val_residences"; // Your database name
 
