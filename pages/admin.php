@@ -125,7 +125,7 @@
                 include_once("included-files/landing-section.html");
                 ?>
                 <div class="landing-content">
-                    <span class="logo-font">Welcome, <?= htmlspecialchars($firstName); ?></span>
+                    <span class="logo-font">Noob, <?= htmlspecialchars($firstName); ?></span>
                     <p>Signed in as <?= htmlspecialchars($userStatus); ?></p>
                     <!-- Dashboard view -->
                     <div class="dashboard-container">
