@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch("../backend/fetch-apartments.php")
         .then(response => response.json())
         .then(async apartments => {
-            let listingsContainer = document.getElementById("manage-listings");
+            let listingsContainer = document.getElementById("manage-apartments");
             listingsContainer.innerHTML = "";
 
             for (const apartment of apartments) {
@@ -46,7 +46,18 @@ document.addEventListener("DOMContentLoaded", function () {
                 boxButtonsContainer.appendChild(boxMapButton);
                 boxMapButton.appendChild(mapIcon);
                 boxButtonsContainer.appendChild(editUnitButton);
+
+                fetch('')
+                    .then(response => response.json())
+                    .then(async units => {
+                        let unitsContainer = document.getElementById("units-detials-container");
+                        unitsContainer.innerHTML = "";
+
+                        for (const unit of units) {
+            	
+                        }
+                    }) .catch(error => console.error("Error fetching apartment listings:", error));
+
             }
-        })
-        .catch(error => console.error("Error fetching apartment listings:", error));
+        }).catch(error => console.error("Error fetching apartment listings:", error));
 });

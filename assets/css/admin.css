@@ -84,23 +84,40 @@
 
 .manage-listings {
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+    flex-direction: row;
+    justify-content: space-between;
     background: #CBCBCB;
     padding: 1rem 1rem;
     gap: 1rem;
     height: auto;
 }
 
+.manage-apartments {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.units-detials-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.manage-unit {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
 .apartment-box {
+    width: 100%;
     background-color: white;
     border: 1px solid black;
-    width: 25%;
 }
 
 .apartment-text {
     padding: 1rem;
-    height: 41%;
 }
 
 .apartment-text h3 {
@@ -114,10 +131,7 @@
 }
 
 .function-buttons-container {
-    height: 19%;
-    width: 100%;
     padding: 1rem;
-    overflow: hidden;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -128,19 +142,16 @@
     background-color: #323232;
     border: none;
     height: 2rem;
-    padding: 0 1.5rem;
+    padding: 0 2rem;
     cursor: pointer;
     transition: background 0.3s;
     font-size: 1rem;
     color: white;
 }
 
-.function-buttons-container button:hover {
-    background-color: #292929;
-}
-
-.function-buttons-container button:active {
-    background-color: #202020;
+.units-detials-container {
+    display: flex;
+    flex-direction: column;
 }
 
 /*MANAGE TENANTS*/

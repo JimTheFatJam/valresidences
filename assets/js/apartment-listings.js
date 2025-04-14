@@ -65,6 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 boxMapButton.appendChild(mapIcon);
                 boxButtonsContainer.appendChild(boxDetailsButton);
             }
-        })
-        .catch(error => console.error("Error fetching apartment listings:", error));
+        }).catch(error => {
+            console.error("Error fetching apartment listings:", error)
+        });
 });
