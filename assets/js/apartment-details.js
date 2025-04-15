@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                     <p>${unit.month_deposit} Month deposit</p>
                     <br>
                     <div class="unit-information-status ${unit.availability_status.toLowerCase()}">
-                        <p>STATUS: ${unit.availability_status.toUpperCase()}</p>
+                        <p>${unit.availability_status.toUpperCase()}</p>
                     </div>
                 </div>
             `;
