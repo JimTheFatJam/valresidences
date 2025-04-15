@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <p>${apartment.address}</p>
                     <p><br>${apartment.apartment_type}</p>
                     <p>Vacant Units: ${apartment.units_vacant}</p>
-                    <p>Php21,000.00–Php25,000.00</p>
+                    <p>Php22,000.00–Php25,000.00</p>
                 `;
 
                 const boxButtonsContainer = document.createElement("div");
