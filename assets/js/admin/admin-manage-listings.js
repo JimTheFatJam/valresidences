@@ -5,23 +5,63 @@ document.addEventListener("DOMContentLoaded", function () {
             let listingsContainer = document.getElementById("manage-apartments");
             listingsContainer.innerHTML = "";
 
-            for (const apartment of apartments) {
+            // Collect all price range fetch promises in parallel
+            const priceRangePromises = apartments.map(async (apartment) => {
+                try {
+                    const priceRange = await fetch(`../backend/fetch-price-range.php?apartment_id=${apartment.apartment_id}`)
+                        .then(res => res.json());
+                
+                    const formatPrice = (price) => {
+                        const numericPrice = parseFloat(price);
+                        return isNaN(numericPrice)
+                            ? null
+                            : `PHP ${numericPrice.toLocaleString("en-PH", {
+                                minimumFractionDigits: 2,
+                                maximumFractionDigits: 2
+                            })}`;
+                    };
+                
+                    const formattedMin = formatPrice(priceRange.min_price);
+                    const formattedMax = formatPrice(priceRange.max_price);
+                
+                    let priceText;
+                
+                    if (formattedMin && formattedMax) {
+                        priceText = priceRange.min_price === priceRange.max_price
+                            ? formattedMin
+                            : `${formattedMin} – ${formattedMax}`;
+                    } else {
+                        priceText = 'Price unavailable';
+                    }
+                
+                    return { apartment, priceText };
+                } catch (error) {
+                    console.error(`Error fetching price range for apartment ${apartment.apartment_id}:`, error);
+                    return { apartment, priceText: 'Price unavailable' };
+                }                
+            });
+
+            // Wait for all the price range fetches to complete
+            const apartmentsWithPrices = await Promise.all(priceRangePromises);
+
+            apartmentsWithPrices.forEach(({ apartment, priceText }) => {
                 const box = document.createElement("div");
                 box.classList.add("apartment-box");
 
                 const boxText = document.createElement("div");
                 boxText.classList.add("apartment-text");
+
                 boxText.innerHTML = `
                     <h3>${apartment.subdivision_address}</h3>
                     <p>${apartment.address}</p>
                     <p><br>${apartment.apartment_type}</p>
                     <p>Vacant Units: ${apartment.units_vacant}</p>
-                    <p>Php21,000.00–Php25,000.00</p>
+                    <p>${priceText}</p>
                 `;
 
                 const boxButtonsContainer = document.createElement("div");
                 boxButtonsContainer.classList.add("function-buttons-container");
-                
+
                 const apartmentMapAddress = apartment.map_address;
                 const boxMapButton = document.createElement("button");
                 const mapIcon = document.createElement("img");
@@ -37,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 editUnitButton.textContent = "EDIT UNIT";
                 editUnitButton.classList.add("plus-jakarta-sans");
                 editUnitButton.addEventListener("click", function () {
-                    
+                    // edit unit logic
                 });
 
                 listingsContainer.appendChild(box);
@@ -46,18 +86,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 boxButtonsContainer.appendChild(boxMapButton);
                 boxMapButton.appendChild(mapIcon);
                 boxButtonsContainer.appendChild(editUnitButton);
-
-                fetch('')
-                    .then(response => response.json())
-                    .then(async units => {
-                        let unitsContainer = document.getElementById("units-detials-container");
-                        unitsContainer.innerHTML = "";
-
-                        for (const unit of units) {
-            	
-                        }
-                    }) .catch(error => console.error("Error fetching apartment listings:", error));
-
-            }
+            });
         }).catch(error => console.error("Error fetching apartment listings:", error));
 });

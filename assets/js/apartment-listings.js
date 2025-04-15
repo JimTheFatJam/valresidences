@@ -5,7 +5,42 @@ document.addEventListener("DOMContentLoaded", function () {
             let listingsContainer = document.getElementById("apartment-listings");
             listingsContainer.innerHTML = "";
 
-            for (const apartment of apartments) {
+            const listingsWithPrices = await Promise.all(apartments.map(async (apartment) => {
+                try {
+                    const priceRange = await fetch(`../backend/fetch-price-range.php?apartment_id=${apartment.apartment_id}`)
+                        .then(res => res.json());
+                
+                    const formatPrice = (price) => {
+                        const numericPrice = parseFloat(price);
+                        return isNaN(numericPrice)
+                            ? null
+                            : `PHP ${numericPrice.toLocaleString("en-PH", {
+                                minimumFractionDigits: 2,
+                                maximumFractionDigits: 2
+                            })}`;
+                    };
+                
+                    const formattedMin = formatPrice(priceRange.min_price);
+                    const formattedMax = formatPrice(priceRange.max_price);
+                
+                    let priceText;
+                
+                    if (formattedMin && formattedMax) {
+                        priceText = priceRange.min_price === priceRange.max_price
+                            ? formattedMin
+                            : `${formattedMin} – ${formattedMax}`;
+                    } else {
+                        priceText = 'Price unavailable';
+                    }
+                
+                    return { apartment, priceText };
+                } catch (error) {
+                    console.error(`Error fetching price range for apartment ${apartment.apartment_id}:`, error);
+                    return { apartment, priceText: 'Price unavailable' };
+                }                
+            }));
+
+            for (const { apartment, priceText } of listingsWithPrices) {
                 const box = document.createElement("div");
                 box.classList.add("apartment-box");
 
@@ -13,16 +48,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 boxImage.classList.add("apartment-image-container");
 
                 // Fetch images for each apartment
-                const images = await fetch(`../backend/fetch-apartment-images.php?apartment_id=${apartment.apartment_id}`)
-                    .then(response => response.json());
+                try {
+                    const images = await fetch(`../backend/fetch-apartment-images.php?apartment_id=${apartment.apartment_id}`)
+                        .then(response => response.json());
 
-                if (images.length > 0) {
-                    const img = document.createElement("img");
-                    img.src = `${images[0]}`; // Show the first image
-                    img.alt = `${apartment.apartment_type} - ${apartment.subdivision_address}`;
-                    img.style.width = "100%";
-                    img.style.height = "100%";
-                    boxImage.appendChild(img);
+                    if (images.length > 0) {
+                        const img = document.createElement("img");
+                        img.src = `${images[0]}`; // Show the first image
+                        img.alt = `${apartment.apartment_type} - ${apartment.subdivision_address}`;
+                        img.style.width = "100%";
+                        img.style.height = "100%";
+                        boxImage.appendChild(img);
+                    }
+                } catch (error) {
+                    console.error(`Error fetching images for apartment ${apartment.apartment_id}:`, error);
                 }
 
                 const boxText = document.createElement("div");
@@ -32,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <p>${apartment.address}</p>
                     <p><br>${apartment.apartment_type}</p>
                     <p>Vacant Units: ${apartment.units_vacant}</p>
-                    <p>Php22,000.00–Php25,000.00</p>
+                    <p>${priceText}</p>
                 `;
 
                 const boxButtonsContainer = document.createElement("div");

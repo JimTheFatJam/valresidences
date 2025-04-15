@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                     <p>${unit.pet_friendly === 1 ? "Pet friendly" : " No pets allowed"}</p>
                     <br>
                     <p>Lease Term: ${unit.lease_term}</p>
-                    <p>Rent Price: $${unit.rent_price}</p>
+                    <p>Rent Price: PHP ${unit.rent_price}</p>
                     <p>${unit.month_advance} Month advance</p>
                     <p>${unit.month_deposit} Month deposit</p>
                     <br>
