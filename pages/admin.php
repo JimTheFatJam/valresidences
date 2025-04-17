@@ -18,6 +18,7 @@
     <!-- JavaScript Files (Relative Paths + defer for Performance) -->
     <script src="../assets/js/admin/admin-message-functions.js" defer></script>
     <script src="../assets/js/admin/admin-manage-listings.js" defer></script>
+    <script src="../assets/js/admin/admin-manage-units.js" defer></script>
 </head>
 
 <body>
@@ -172,8 +173,6 @@
                     </div>
                     <div class="manage-listings" id="manage-listings">
                         <div class="manage-apartments" id="manage-apartments"></div>
-                        <div class="units-detials-container"></div>
-                        <div class="manage-units"></div>
                     </div>
                 </div>
 
