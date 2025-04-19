@@ -14,11 +14,13 @@
     <!-- CSS Files -->
     <link rel="stylesheet" href="../assets/css/admin.css">
     <link rel="stylesheet" href="../assets/css/admin-announcement-popup.css">
+    <link rel="stylesheet" href="../assets/css/admin-manage-listings-popup.css">
 
     <!-- JavaScript Files (Relative Paths + defer for Performance) -->
     <script src="../assets/js/admin/admin-message-functions.js" defer></script>
     <script src="../assets/js/admin/admin-manage-listings.js" defer></script>
-    <script src="../assets/js/admin/admin-manage-units.js" defer></script>
+    <script src="../assets/js/admin/admin-manage-listings-functions.js" defer></script>
+    <script src="../assets/js/admin/admin-image-functions.js" defer></script>
 </head>
 
 <body>
@@ -71,8 +73,62 @@
     <!-- Dark Overlay -->
     <div id="popupOverlay" class="overlay"></div>
 
+    <!-- Add Apartment Popup -->
+     <div id="addApartmentPopup" class="add-apartment-popup">
+        <img class="close_button" src="../assets/icons/close_button.svg" onclick="closeAddApartmentPopup()"
+            alt="close_button">
+        <h2 class="plus-jakarta-sans-bold">ADD APARTMENT</h2>
+        <div class="addApartmentForm">
+            <div class="functions">
+                <div class="left-side">
+                    <label for="apartmentSubdivisionAddress" id="apartmentSubdivisionAddressLabel">Subdivision Address</label>
+                    <input type="text" id="apartmentSubdivisionAddress" placeholder="Enter subdivision address" required>
+
+                    <label for="apartmentAddress" id="apartmentAddressLabel">Address</label>
+                    <input type="text" id="apartmentAddress" placeholder="Enter address" required>
+
+                    <label for="apartmentType" id="apartmentTypeLabel">Apartment Type</label>
+                    <input type="text" id="apartmentType" placeholder="Enter apartment type" required>
+
+                    <label for="apartmentMapURL" id="apartmentMapURLLabel">Map URL</label>
+                    <input type="text" id="apartmentMapURL" placeholder="Enter map URL" required>
+                </div>
+                <div class="right-side">
+                    <label for="apartmentImages" id="apartmentImagesLabel">Apartment Images</label>
+                    <input type="file" id="apartmentImages" name="apartmentImages[]" accept="image/*" multiple required>
+                    <div class="preview-apartment-images" id="previewApartmentImages">
+                    </div>
+                </div>
+            </div>
+            <div class="add-apartment-button-container">
+                <button class="plus-jakarta-sans" id="submitNewApartment" onclick="submitNewApartment()">SUBMIT</button>
+            </div>
+        </div>
+     </div>
+
+    <!-- Add Unit Popup -->
+
+    <!-- Edit Apartment Popup -->
+
+    <!-- Edit Unit Popup -->
+
     <!-- Tenant Announcements Popup -->
-    <div class="tenant-announcement-popup" id="tenantAnnouncementPopup"></div>
+    <div id="tenantAnnouncementPopup" class="tenant-announcement-popup">
+        <img class="close_button" src="../assets/icons/close_button.svg" onclick="closeTenantAnnouncementPopup()"
+            alt="close_button">
+        <h2 class="plus-jakarta-sans-bold">TENANT ANNOUNCEMENT</h2>
+        <div class="tenantAnnouncementForm">
+            <label for="tenantSubject" id="tenantSubjectLabel">Subject</label>
+            <input type="text" id="tenantSubject" placeholder="Enter subject" required>
+
+            <label for="tenantMessage" id="tenantMessageLabel">Message</label>
+            <textarea id="tenantMessage" placeholder="Enter message" required></textarea>
+
+            <div class="tenant-button-container">
+                <button class="plus-jakarta-sans" id="submitTenantAnnouncement" onclick="sendTenantAnnouncement()">SUBMIT</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Vacancy Announcement Popup -->
     <div id="vacancyAnnouncementPopup" class="vacancy-announcement-popup">

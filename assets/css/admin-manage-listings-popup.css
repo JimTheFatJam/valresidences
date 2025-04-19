@@ -1,6 +1,5 @@
 /* Announcment Popup containers */
-.tenant-announcement-popup,
-.vacancy-announcement-popup {
+.add-apartment-popup {
     display: none;
     position: fixed;
     top: 50%;
@@ -15,8 +14,7 @@
 }
 
 /* Close button */
-.tenant-announcement-popup .close_button,
-.vacancy-announcement-popup .close_button {
+.add-apartment-popup .close_button {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -25,11 +23,50 @@
     cursor: pointer;
 }
 
+/* Form layout */
+.addApartmentForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.addApartmentForm .functions {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.addApartmentForm .left-side {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.addApartmentForm .right-side {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.preview-apartment-images {
+    height: 14.2rem;
+    display: none;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    outline: 1px solid #AEAEAE;
+}
+
+.preview-apartment-images img {
+    border: 1px solid #c2c2c2;
+    width: 100%;
+}
+
 /* Input fields */
-.tenant-announcement-popup input,
-.tenant-announcement-popup textarea,
-.vacancy-announcement-popup input,
-.vacancy-announcement-popup textarea {
+.add-apartment-popup input {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
@@ -41,39 +78,27 @@
     height: 2.5rem;
 }
 
-.tenant-announcement-popup textarea
-.vacancy-announcement-popup textarea {
-    resize: vertical;
-    height: 5rem;
-}
-
-.tenant-announcement-popup input::placeholder,
-.tenant-announcement-popup textarea::placeholder,
-.vacancy-announcement-popup input::placeholder,
-.vacancy-announcement-popup textarea::placeholder {
+.add-apartment-popup input::placeholder {
     font-family: "Sen", serif;
     font-weight: 400;
     color: #AEAEAE;
 }
 
 /* Center the heading */
-.tenant-announcement-popup h2,
-.vacancy-announcement-popup h2 {
+.add-apartment-popup h2 {
     text-align: center;
     margin-bottom: 1.3rem;
 }
 
 /* Button container */
-.tenant-button-container,
-.vacancy-button-container {
+.add-apartment-button-container {
     width: 100%;
     display: flex;
     justify-content: center;
     margin-top: 20px;
 }
 
-.tenant-announcement-popup button,
-.vacancy-announcement-popup button {
+.add-apartment-popup button {
     width: 60%;
     height: 2.5rem;
     background: #323232;
@@ -84,24 +109,10 @@
     transition: 300ms ease;
 }
 
-.tenant-announcement-popup button:hover,
-.vacancy-announcement-popup button:hover {
+.add-apartment-popup button:hover {
     background-color: #292929;
 }
 
-.tenant-announcement-popup button:active,
-.vacancy-announcement-popup button:active {
+.add-apartment-popup button:active {
     background-color: #202020;
-}
-
-/* Disabled styles */
-button:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-}
-
-input:disabled,
-textarea:disabled {
-    background-color: #f2f2f2;
-    cursor: not-allowed;
 }

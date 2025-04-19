@@ -33,16 +33,19 @@ document.addEventListener("DOMContentLoaded", function () {
                         priceText = 'Price unavailable';
                     }
 
-                    return { apartment, priceText };
+                    const unitDetails = await fetch(`../backend/fetch-apartment-details.php?apartment_id=${apartment.apartment_id}`)
+                        .then(response => response.json());
+
+                    return { apartment, priceText, unitDetails };
                 } catch (error) {
-                    console.error(`Error fetching price range for apartment ${apartment.apartment_id}:`, error);
-                    return { apartment, priceText: 'Price unavailable' };
+                    console.error(`Error fetching price range or unit details for apartment ${apartment.apartment_id}:`, error);
+                    return { apartment, priceText: 'Price unavailable', unitDetails: [] };
                 }
             });
 
-            const apartmentsWithPrices = await Promise.all(priceRangePromises);
+            const apartmentsWithPricesAndUnits = await Promise.all(priceRangePromises);
 
-            apartmentsWithPrices.forEach(({ apartment, priceText }) => {
+            apartmentsWithPricesAndUnits.forEach(({ apartment, priceText, unitDetails }) => {
                 const box = document.createElement("div");
                 box.classList.add("apartment-box");
 
@@ -71,11 +74,12 @@ document.addEventListener("DOMContentLoaded", function () {
                     window.open(apartmentMapAddress, "_blank");
                 });
 
-                const editUnitButton = document.createElement("button");
-                editUnitButton.textContent = "EDIT LISTING";
-                editUnitButton.classList.add("plus-jakarta-sans");
-                editUnitButton.addEventListener("click", function () {
-                    // edit unit logic
+                const editApartmentButton = document.createElement("button");
+                editApartmentButton.textContent = "EDIT LISTING";
+                editApartmentButton.classList.add("plus-jakarta-sans");
+                editApartmentButton.addEventListener("click", function () {
+                    // Edit apartment
+                    openEditApartmentPopup(apartment.apartment_id);
                 });
 
                 listingsContainer.appendChild(box);
@@ -83,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 box.appendChild(boxButtonsContainer);
                 boxButtonsContainer.appendChild(boxMapButton);
                 boxMapButton.appendChild(mapIcon);
-                boxButtonsContainer.appendChild(editUnitButton);
+                boxButtonsContainer.appendChild(editApartmentButton);
 
                 let apartmentHeight = box.offsetHeight + 'px';
 
@@ -95,6 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <table class="unit-table">
                         <thead>
                             <tr>
+                                <th>Edit</th>
                                 <th>Unit #</th>
                                 <th>Floors</th>
                                 <th>Area</th>
@@ -109,51 +114,67 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <th>Advance</th>
                                 <th>Available</th>
                                 <th>Furnished</th>
-                                <th>Edit</th>
                             </tr>
                         </thead>
                         <tbody>
                 `;
 
-                fetch(`../backend/fetch-apartment-details.php?apartment_id=${apartment.apartment_id}`)
-                    .then(response => response.json())
-                    .then(units => {
-                        units.forEach(unit => {
-                            unitTable += `
-                                <tr>
-                                    <td>${unit.unit_number}</td>
-                                    <td>${unit.total_floors}</td>
-                                    <td>${unit.living_area} sqm</td>
-                                    <td>${unit.bedroom_count}</td>
-                                    <td>${unit.tb_count}</td>
-                                    <td>${unit.balcony}</td>
-                                    <td>${unit.parking_space}</td>
-                                    <td>${unit.pet_friendly}</td>
-                                    <td>${unit.lease_term}</td>
-                                    <td>Php ${parseFloat(unit.rent_price).toLocaleString("en-PH", { minimumFractionDigits: 2 })}</td>
-                                    <td>${unit.month_deposit} mo.</td>
-                                    <td>${unit.month_advance} mo.</td>
-                                    <td>${unit.availability_status}</td>
-                                    <td>${unit.furnished_status}</td>
-                                    <td><button class="edit-unit-btn plus-jakarta-sans">EDIT UNIT</button></td>
-                                </tr>
-                            `;
-                        });
+                unitDetails.forEach(unit => {
+                    unitTable += `
+                        <tr>
+                            <td><button class="edit-unit-btn plus-jakarta-sans" onclick="openEditUnitPopup(${unit.unit_id})">EDIT UNIT</button></td>
+                            <td>${unit.unit_number}</td>
+                            <td>${unit.total_floors}</td>
+                            <td>${unit.living_area} sqm</td>
+                            <td>${unit.bedroom_count}</td>
+                            <td>${unit.tb_count}</td>
+                            <td>${unit.balcony}</td>
+                            <td>${unit.parking_space}</td>
+                            <td>${unit.pet_friendly}</td>
+                            <td>${unit.lease_term}</td>
+                            <td>Php ${parseFloat(unit.rent_price).toLocaleString("en-PH", { minimumFractionDigits: 2 })}</td>
+                            <td>${unit.month_deposit} mo.</td>
+                            <td>${unit.month_advance} mo.</td>
+                            <td>${unit.availability_status}</td>
+                            <td>${unit.furnished_status}</td>
+                        </tr>
+                    `;
+                });
 
-                        unitTable += `</tbody></table>`;
-                        unitBox.innerHTML = unitTable;
+                unitTable += `
+                        <tr>
+                            <td>
+                                <button class="add-unit-btn plus-jakarta-sans" data-apartment-id="${apartment.apartment_id}">
+                                    ADD UNIT
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody></table>
+                `;
+                
+                unitBox.innerHTML = unitTable;
 
-                        const apartmentGroup = document.createElement("div");
-                        apartmentGroup.classList.add("apartment-group");
-                        apartmentGroup.appendChild(box);
-                        apartmentGroup.appendChild(unitBox);
-                        listingsContainer.appendChild(apartmentGroup);
-                    })
-                    .catch(error => {
-                        unitBox.innerHTML = `<p>Error loading unit details.</p>`;
-                        console.error("Error fetching unit details:", error);
-                        box.appendChild(unitBox);  // Append to the right apartment box
-                    });
+                unitBox.querySelector(".add-unit-btn").addEventListener("click", function () {
+                    const apartmentId = this.getAttribute("data-apartment-id");
+                    // Add unit for apartment
+                    openAddUnitPopup(apartmentId);
+                });
+
+                const apartmentGroup = document.createElement("div");
+                apartmentGroup.classList.add("apartment-group");
+                apartmentGroup.appendChild(box);
+                apartmentGroup.appendChild(unitBox);
+                listingsContainer.appendChild(apartmentGroup);
             });
+
+            const addApartmentBtn = document.createElement("button");
+            addApartmentBtn.textContent = "ADD APARTMENT";
+            addApartmentBtn.classList.add("add-apartment-btn", "plus-jakarta-sans");
+            addApartmentBtn.addEventListener("click", function () {
+                // Add apartment
+                openAddApartmentPopup();
+            });
+
+            listingsContainer.appendChild(addApartmentBtn);
         }).catch(error => console.error("Error fetching apartment listings:", error));
 });

@@ -25,11 +25,10 @@ VALUES ('jemuel.jv.valencia@gmail.com', 'QW12erty', 'admin');
 
 
 
-
 INSERT INTO apartment_units (
     apartment_id, unit_number, total_floors, living_area, bedroom_count, tb_count, 
-    balcony, parking_space, pet_friendly, lease_term, rent_price, deposit_amount, 
-    availability_status, furnished_status, created_at, updated_at
+    balcony, parking_space, pet_friendly, lease_term, rent_price, month_deposit, 
+    month_advance, availability_status, furnished_status, created_at, updated_at
 ) VALUES (
     1, -- Apartment ID (Change this based on the correct apartment)
     1, -- Unit Number
@@ -41,13 +40,15 @@ INSERT INTO apartment_units (
     1, -- Parking Space (1 for Yes, 0 for No)
     1, -- Pet Friendly (1 for Yes, 0 for No)
     '1 year', -- Lease Term
-    1500.00, -- Rent Price in USD
-    1500.00, -- Deposit Amount in USD
-    'Available', -- Availability Status (e.g., Available, Rented, Pending)
-    'Furnished', -- Furnished Status (e.g., Furnished, Unfurnished, Semi-Furnished)
+    4534.00, -- Rent Price in USD
+    1, -- Month deposit
+    2, -- Month advance
+    'available', -- Availability Status (e.g., 'available', 'occupied', 'reserved')
+    'Furnished', -- Furnished Status (e.g., 'Furnished', 'Semi-furnished', 'Unfurnished')
     NOW(), -- Created At (Current Timestamp)
     NOW() -- Updated At (Current Timestamp)
 );
+
 
 
 INSERT INTO apartment_images (apartment_id, file_link)
