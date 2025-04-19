@@ -21,6 +21,7 @@
     <script src="../assets/js/admin/admin-manage-listings.js" defer></script>
     <script src="../assets/js/admin/admin-manage-listings-functions.js" defer></script>
     <script src="../assets/js/admin/admin-image-functions.js" defer></script>
+    <script src="../assets/js/admin/admin-manage-units-functions.js" defer></script>
 </head>
 
 <body>
