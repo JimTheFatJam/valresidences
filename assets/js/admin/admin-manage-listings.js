@@ -128,13 +128,13 @@ document.addEventListener("DOMContentLoaded", function () {
                             <td>${unit.living_area} sqm</td>
                             <td>${unit.bedroom_count}</td>
                             <td>${unit.tb_count}</td>
-                            <td>${unit.balcony}</td>
-                            <td>${unit.parking_space}</td>
-                            <td>${unit.pet_friendly}</td>
-                            <td>${unit.lease_term}</td>
+                            <td>${unit.balcony == 1 ? 'Yes' : 'No'}</td>
+                            <td>${unit.parking_space == 1 ? 'Yes' : 'No'}</td>
+                            <td>${unit.pet_friendly == 1 ? 'Yes' : 'No'}</td>
+                            <td>${unit.lease_term} ${unit.lease_term == 1 ? 'yr.' : 'yrs.'}</td>
                             <td>Php ${parseFloat(unit.rent_price).toLocaleString("en-PH", { minimumFractionDigits: 2 })}</td>
-                            <td>${unit.month_deposit} mo.</td>
-                            <td>${unit.month_advance} mo.</td>
+                            <td>${unit.month_deposit} ${unit.month_deposit == 1 ? 'mo.' : 'mos.'}</td>
+                            <td>${unit.month_advance} ${unit.month_advance == 1 ? 'mo.' : 'mos.'}</td>
                             <td>${unit.availability_status}</td>
                             <td>${unit.furnished_status}</td>
                         </tr>

@@ -51,10 +51,10 @@ document.addEventListener("DOMContentLoaded", async function () {
                     <p>${unit.parking_space === 1 ? "With parking" : "No parking"}</p>
                     <p>${unit.pet_friendly === 1 ? "Pet friendly" : " No pets allowed"}</p>
                     <br>
-                    <p>Lease Term: ${unit.lease_term}</p>
-                    <p>Rent Price: PHP ${formattedRent}</p>
-                    <p>${unit.month_advance} Month advance</p>
-                    <p>${unit.month_deposit} Month deposit</p>
+                    <p>Lease Term: ${unit.lease_term} ${unit.lease_term == 1 ? 'year' : 'years'}</p>
+                    <p>Rent Price: ${formattedRent}</p>
+                    <p>${unit.month_advance} ${unit.month_advance == 1 ? 'Month' : 'Months'} advance</p>
+                    <p>${unit.month_deposit} ${unit.month_deposit == 1 ? 'Month' : 'Months'} deposit</p>
                     <br>
                     <div class="unit-information-status ${unit.availability_status.toLowerCase()}">
                         <p>${unit.availability_status.toUpperCase()}</p>

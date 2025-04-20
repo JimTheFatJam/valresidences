@@ -1,6 +1,13 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const imageInput = document.getElementById('apartmentImages');
-    const imageContainer = document.getElementById('previewApartmentImages');
+    setupImagePreview('apartmentImages', 'previewApartmentImages');
+    setupImagePreview('unitImages', 'previewUnitImages');
+});
+
+function setupImagePreview(inputId, containerId) {
+    const imageInput = document.getElementById(inputId);
+    const imageContainer = document.getElementById(containerId);
+
+    if (!imageInput || !imageContainer) return;
 
     // Initially hide the container
     imageContainer.style.display = 'none';
@@ -25,10 +32,11 @@ document.addEventListener('DOMContentLoaded', function () {
             reader.onload = function (e) {
                 const img = document.createElement('img');
                 img.src = e.target.result;
+                img.alt = 'Preview';
                 imageContainer.appendChild(img);
             };
 
             reader.readAsDataURL(file);
         });
     });
-});  
+}

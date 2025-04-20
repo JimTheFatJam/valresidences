@@ -17,6 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $sql = "UPDATE apartment_listings SET subdivision_address = ?, address = ?, apartment_type = ?, map_address = ? WHERE apartment_id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ssssi", $subdivisionAddress, $address, $type, $mapURL, $apartmentId);
+    
     if ($stmt->execute()) {
         // Handle image uploads (delete old images, if necessary, and insert new ones)
         if ($images && !empty($images['name'][0])) {  // If new images are uploaded

@@ -75,7 +75,7 @@
     <div id="popupOverlay" class="overlay"></div>
 
     <!-- Add Apartment Popup -->
-     <div id="addApartmentPopup" class="add-apartment-popup">
+    <div id="addApartmentPopup" class="add-apartment-popup">
         <img class="close_button" src="../assets/icons/close_button.svg" onclick="closeAddApartmentPopup()"
             alt="close_button">
         <h2 class="plus-jakarta-sans-bold">ADD APARTMENT</h2>
@@ -108,10 +108,95 @@
      </div>
 
     <!-- Add Unit Popup -->
+     <div id="addUnitPopup" class="add-unit-popup">
+        <img class="close_button" src="../assets/icons/close_button.svg" onclick="closeAddUnitPopup()"
+            alt="close_button">
+        <h2 class="plus-jakarta-sans-bold">ADD UNIT</h2>
+        <div class="addUnitForm">
+            <div class="functions">
+                <div class="left-side">
+                    <div class="function-group">
+                        <label for="unitNumber" id="unitNumberLabel">Unit</label>
+                        <input type="number" id="unitNumber" placeholder="Enter unit number" min="1" step="1" required>
+                    
+                        <label for="bedroomCount" id="bedroomCountLabel">Bedrooms</label>
+                        <input type="number" id="bedroomCount" placeholder="Enter number of bedrooms" min="1" step="1" required>
+                    
+                        <label for="parkingSpaceBool" id="parkingSpaceBoolLabel">Parking Space</label>
+                        <select id="parkingSpaceBool" required>
+                            <option value="" disabled selected hidden>Select an option</option>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
 
-    <!-- Edit Apartment Popup -->
+                        <label for="rentPrice" id="rentPriceLabel">Rent Price</label>
+                        <input type="number" id="rentPrice" placeholder="Enter rent price" min="0" step="0.01" required>
+                    
+                        <label for="availabilityStatus" id="availabilityStatusLabel">Availability Status</label>
+                        <select id="availabilityStatus" required>
+                            <option value="" disabled selected hidden>Select an option</option>
+                            <option value="Available">Available</option>
+                            <option value="Occupied">Occupied</option>
+                            <option value="Reserved">Reserved</option>
+                        </select>
+                    </div>
 
-    <!-- Edit Unit Popup -->
+                    <div class="function-group">
+                        <label for="floorCount" id="floorCountLabel">Floors</label>
+                        <input type="number" id="floorCount" placeholder="Enter number of floors" min="1" step="1" required>
+
+                        <label for="tbCount" id="tbCountLabel">T&B</label>
+                        <input type="number" id="tbCount" placeholder="Enter number of toilets and baths" min="1" step="1" required>
+                    
+                        <label for="petFriendlyBool" id="petFriendlyBoolLabel">Pet Friendly</label>
+                        <select id="petFriendlyBool" required>
+                            <option value="" disabled selected hidden>Select an option</option>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+
+                        <label for="monthAdvance" id="monthAdvanceLabel">Month Advance</label>
+                        <input type="number" id="monthAdvance" placeholder="Enter number of months" min="1" step="1" required>
+                    
+                        <label for="furnishingStatus" id="furnishingStatusLabel">Furnishing Status</label>
+                        <select id="furnishingStatus" required>
+                            <option value="" disabled selected hidden>Select an option</option>
+                            <option value="Furnished">Furnished</option>
+                            <option value="Semi-furnished">Semi-furnished</option>
+                            <option value="Unfurnished">Unfurnished</option>
+                        </select>
+                    </div>
+
+                    <div class="function-group">
+                        <label for="livingArea" id="livingAreaLabel">Living Area (sqm)</label>
+                        <input type="number" id="livingArea" placeholder="Enter living area" min="0" step="0.01" required>
+                    
+                        <label for="balconyBool" id="balconyBoolLabel">Balcony</label>
+                        <select id="balconyBool" required>
+                            <option value="" disabled selected hidden>Select an option</option>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+
+                        <label for="leaseTerm" id="leaseTermLabel">Lease Term (yr)</label>
+                        <input type="number" id="leaseTerm" placeholder="Enter lease term" min="1" step="1" required>
+
+                        <label for="monthDeposit" id="monthDepositLabel">Month Deposit</label>
+                        <input type="number" id="monthDeposit" placeholder="Enter number of months" min="1" step="1" required>
+                    </div>
+                </div>
+                <div class="right-side">
+                    <label for="unitImages" id="unitImagesLabel">Unit Images</label>
+                    <input type="file" id="unitImages" name="unitImages[]" accept="image/*" multiple required>
+                    <div class="preview-unit-images" id="previewUnitImages">
+                    </div>
+                </div>
+            </div>
+            <div class="add-unit-button-container">
+                <button class="plus-jakarta-sans" id="submitNewUnit">SUBMIT</button>
+            </div>
+        </div>
+     </div>
 
     <!-- Tenant Announcements Popup -->
     <div id="tenantAnnouncementPopup" class="tenant-announcement-popup">

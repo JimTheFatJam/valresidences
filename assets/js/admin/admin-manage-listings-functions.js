@@ -75,7 +75,7 @@ function openEditApartmentPopup(apartmentId) {
 
     // Show popup
     document.getElementById("addApartmentPopup").style.display = "block";
-    document.getElementById("popupOverlay").style.display      = "block";
+    document.getElementById("popupOverlay").style.display = "block";
 
     // Fetch and fill data
     $.ajax({
@@ -100,13 +100,13 @@ function openEditApartmentPopup(apartmentId) {
                 const el = document.getElementById(f.id);
                 el.value = f.value;
                 el.dataset.original = f.value;
-                el.addEventListener("input", checkIfFormChanged);
+                el.addEventListener("input", checkIfEditApartmentFormChanged);
             });
 
             // File‑input listener
             const imgInput = document.getElementById("apartmentImages");
             imgInput.value = "";
-            imgInput.addEventListener("change", checkIfFormChanged);
+            imgInput.addEventListener("change", checkIfEditApartmentFormChanged);
 
             // Preview existing images
             if (data.images && data.images.length) {
@@ -125,7 +125,7 @@ function openEditApartmentPopup(apartmentId) {
 }
 
 // Check for input change
-function checkIfFormChanged() {
+function checkIfEditApartmentFormChanged() {
     const subdivision = document.getElementById("apartmentSubdivisionAddress");
     const address     = document.getElementById("apartmentAddress");
     const type        = document.getElementById("apartmentType");
@@ -325,10 +325,11 @@ function submitEditApartment(apartmentId) {
         formData.append("apartmentImages[]", images[i]);
     }
 
+    // AJAX
     console.log("Saving apartment data:", subdivisionAddress);
     $.ajax({
         method: "POST",
-        url: "../backend/edit-apartment.php",  // PHP script to handle the editing
+        url: "../backend/edit-apartment.php",
         data: formData,
         processData: false,
         contentType: false,
