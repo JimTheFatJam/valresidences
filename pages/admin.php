@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="../assets/css/admin.css">
     <link rel="stylesheet" href="../assets/css/admin-announcement-popup.css">
     <link rel="stylesheet" href="../assets/css/admin-manage-listings-popup.css">
+    <link rel="stylesheet" href="../assets/css/modal.css">
 
     <!-- JavaScript Files (Relative Paths + defer for Performance) -->
     <script src="../assets/js/admin/admin-message-functions.js" defer></script>

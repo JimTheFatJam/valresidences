@@ -86,6 +86,7 @@ function openEditUnitPopup(unitId) {
     const popupTitle = document.querySelector("#addUnitPopup h2");
     const button     = document.querySelector(".add-unit-button-container button");
     const imageContainer = document.getElementById("previewUnitImages");
+    document.querySelector('#addUnitPopup .close_button').setAttribute('onclick', 'closeEditUnitPopup()');
 
     popupTitle.innerHTML = "EDIT UNIT";
     button.innerHTML     = "SAVE";
@@ -94,6 +95,17 @@ function openEditUnitPopup(unitId) {
     button.disabled      = true;            // disable until a change
     imageContainer.innerHTML  = "";        
     imageContainer.style.display = "none";
+
+    // Append delete button
+    const buttonContainer = document.querySelector('.add-unit-button-container');
+    const deleteBtn = document.createElement('button');
+    deleteBtn.className = 'plus-jakarta-sans';
+    deleteBtn.id = 'deleteUnit';
+    deleteBtn.textContent = 'DELETE';
+    deleteBtn.onclick = function() {
+        deleteUnit(unitId);
+    };
+    buttonContainer.appendChild(deleteBtn);
 
     // Show popup
     document.getElementById("addUnitPopup").style.display = "block";
@@ -208,6 +220,7 @@ function closeEditUnitPopup() {
     document.getElementById("addUnitPopup").style.display = "none";
     document.getElementById("popupOverlay").style.display = "none";
     document.getElementById("previewApartmentImages").style.display = "none";
+    document.getElementById("deleteUnit")?.remove();
 
     $(".error-message").remove();
     $(".addUnitForm input, .addUnitForm select").removeClass("error-border").val("");
@@ -398,7 +411,7 @@ function submitEditUnit(unitId) {
         if (field.id === "unitImages") return;
         let value = document.getElementById(field.id).value.trim();
         if (value === "") {
-            $("#" + field.label).append('<span class="error-message"> * Required</span>');
+            $("#" + field.label).append('<span class="error-message" style="font-size: 0.8rem;"> * Required</span>');
             $("#" + field.id).addClass("error-border");
             isFieldEmpty = true;
         }
@@ -446,5 +459,53 @@ function submitEditUnit(unitId) {
         submitButton.innerHTML = "SAVE";
         submitButton.disabled = false;
         inputs.forEach(input => input.disabled = false);
+    });
+}
+
+function deleteUnit(unitId) {
+    // Create modal container
+    const modal = document.createElement("div");
+    modal.classList.add("modal-overlay");
+    modal.innerHTML = `
+        <div class="modal-box">
+            <h2>Are you sure?</h2>
+            <p>This action will <strong>permanently delete</strong> the unit, its images, and all related data.</p>
+            <div class="modal-buttons">
+                <button class="plus-jakarta-sans confirm-delete">Yes, Delete</button>
+                <button class="plus-jakarta-sans cancel-delete">Cancel</button>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+
+    // Add event listeners
+    modal.querySelector(".cancel-delete").addEventListener("click", () => {
+        modal.remove();
+    });
+
+    modal.querySelector(".confirm-delete").addEventListener("click", () => {
+        fetch('../backend/delete-unit.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ unitId: unitId })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert("Unit deleted successfully.");
+                // Optionally refresh or remove the apartment element from the DOM
+                location.reload();
+            } else {
+                alert("Error deleting unit: " + data.message);
+            }
+        })
+        .catch(err => {
+            console.error("Delete request failed:", err);
+            alert("Something went wrong.");
+        });
+
+        modal.remove();
     });
 }

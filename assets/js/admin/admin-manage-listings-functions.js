@@ -64,6 +64,7 @@ function openEditApartmentPopup(apartmentId) {
     const popupTitle = document.querySelector("#addApartmentPopup h2");
     const button     = document.querySelector(".add-apartment-button-container button");
     const imageContainer = document.getElementById("previewApartmentImages");
+    document.querySelector('#addApartmentPopup .close_button').setAttribute('onclick', 'closeEditApartmentPopup()');
 
     popupTitle.innerHTML = "EDIT APARTMENT";
     button.innerHTML     = "SAVE";
@@ -72,6 +73,17 @@ function openEditApartmentPopup(apartmentId) {
     button.disabled      = true;            // disable until a change
     imageContainer.innerHTML  = "";        
     imageContainer.style.display = "none";
+
+    // Append delete button
+    const buttonContainer = document.querySelector('.add-apartment-button-container');
+    const deleteBtn = document.createElement('button');
+    deleteBtn.className = 'plus-jakarta-sans';
+    deleteBtn.id = 'deleteApartment';
+    deleteBtn.textContent = 'DELETE';
+    deleteBtn.onclick = function() {
+        deleteApartment(apartmentId);
+    };
+    buttonContainer.appendChild(deleteBtn);
 
     // Show popup
     document.getElementById("addApartmentPopup").style.display = "block";
@@ -147,6 +159,7 @@ function closeEditApartmentPopup() {
     document.getElementById("addApartmentPopup").style.display = "none";
     document.getElementById("popupOverlay").style.display = "none";
     document.getElementById("previewApartmentImages").style.display = "none";
+    document.getElementById("deleteApartment")?.remove();
 
     $(".error-message").remove();
     $("#apartmentSubdivisionAddress, #apartmentAddress, #apartmentType, #apartmentMapURL, #apartmentImages").removeClass("error-border").val("");
@@ -352,5 +365,53 @@ function submitEditApartment(apartmentId) {
         submitButton.innerHTML = "SAVE";
         submitButton.disabled = false;
         inputs.forEach(input => input.disabled = false);
+    });
+}
+
+function deleteApartment(apartmentId) {
+    // Create modal container
+    const modal = document.createElement("div");
+    modal.classList.add("modal-overlay");
+    modal.innerHTML = `
+        <div class="modal-box">
+            <h2>Are you sure?</h2>
+            <p>This action will <strong>permanently delete</strong> the apartment, its units, images, and all related data.</p>
+            <div class="modal-buttons">
+                <button class="plus-jakarta-sans confirm-delete">Yes, Delete</button>
+                <button class="plus-jakarta-sans cancel-delete">Cancel</button>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+
+    // Add event listeners
+    modal.querySelector(".cancel-delete").addEventListener("click", () => {
+        modal.remove();
+    });
+
+    modal.querySelector(".confirm-delete").addEventListener("click", () => {
+        fetch('../backend/delete-apartment.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ apartmentId: apartmentId })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert("Apartment deleted successfully.");
+                // Optionally refresh or remove the apartment element from the DOM
+                location.reload();
+            } else {
+                alert("Error deleting apartment: " + data.message);
+            }
+        })
+        .catch(err => {
+            console.error("Delete request failed:", err);
+            alert("Something went wrong.");
+        });
+
+        modal.remove();
     });
 }
