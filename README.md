@@ -29,4 +29,4 @@ A web-based apartment management system designed to streamline listings, tenant 
 ---
 
 ## 👨‍💻 Developed by
-Jemuel S. Valencia – BS Computer Science Student @ USC
+Jemuel S. Valencia – BS Computer Science Student @ University Of San Carlos
