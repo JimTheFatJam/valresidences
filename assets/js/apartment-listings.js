@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
+    const userStatus = document.body.dataset.userStatus;
+    console.log("User status is:", userStatus);
+    
     fetch("../backend/fetch-apartments.php")
         .then(response => response.json())
         .then(async apartments => {
@@ -93,9 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 boxDetailsButton.textContent = "VIEW UNITS";
                 boxDetailsButton.classList.add("plus-jakarta-sans");
 
-                const userStatus = document.body.dataset.userStatus;
-                console.log("User status is:", userStatus);
-                console.log("Redirecting to:", `../pages/${userStatus}-apartment-details.php?apartment_id=${apartmentId}`);
+                console.log("View Units redirecting to:", `../pages/${userStatus}-apartment-details.php?apartment_id=${apartmentId}`);
                 boxDetailsButton.addEventListener("click", function () {
                     if (userStatus === "admin" || userStatus === "user" || userStatus === "tenant") {
                         window.location.href = `../pages/${userStatus}-apartment-details.php?apartment_id=${apartmentId}`;
