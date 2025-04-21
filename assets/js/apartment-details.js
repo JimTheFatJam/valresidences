@@ -76,9 +76,23 @@ document.addEventListener("DOMContentLoaded", async function () {
             applyButton.classList.add("plus-jakarta-sans");
             applyButton.setAttribute("onclick", `openApplyUnitPopup(${unit.unit_id})`);
 
-            unitButtons.appendChild(inquireButton);
-            unitButtons.appendChild(applyButton);
-            unitInfo.appendChild(unitButtons);
+            const userStatus = document.body.dataset.userStatus;
+            
+            if (!userStatus) {
+                unitButtons.appendChild(inquireButton);
+                unitButtons.appendChild(applyButton);
+            } else if (userStatus === "user") {
+                unitButtons.appendChild(inquireButton);
+                unitButtons.appendChild(applyButton);
+            } else if (userStatus === "tenant") {
+                unitButtons.appendChild(inquireButton);
+                applyButton.style.display = "none";
+                inquireButton.style.width = "100%";
+            }
+
+            if (userStatus !== "admin") {
+                unitInfo.appendChild(unitButtons);
+            }
 
             // Unit Image Container
             const unitImageContainer = document.createElement("div");
@@ -286,5 +300,6 @@ function openApplyUnitPopup(unitId) {
 }
 
 function isUserLoggedIn() {
-    return !!document.cookie.match('session_id=');
+    const userStatus = document.body.dataset.userStatus;
+    return userStatus && userStatus !== '';
 }

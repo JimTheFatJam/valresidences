@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 try {
                     const priceRange = await fetch(`../backend/fetch-price-range.php?apartment_id=${apartment.apartment_id}`)
                         .then(res => res.json());
-                
+
                     const formatPrice = (price) => {
                         const numericPrice = parseFloat(price);
                         return isNaN(numericPrice)
@@ -19,12 +19,12 @@ document.addEventListener("DOMContentLoaded", function () {
                                 maximumFractionDigits: 2
                             })}`;
                     };
-                
+
                     const formattedMin = formatPrice(priceRange.min_price);
                     const formattedMax = formatPrice(priceRange.max_price);
-                
+
                     let priceText;
-                
+
                     if (formattedMin && formattedMax) {
                         priceText = priceRange.min_price === priceRange.max_price
                             ? formattedMin
@@ -32,12 +32,12 @@ document.addEventListener("DOMContentLoaded", function () {
                     } else {
                         priceText = 'Price unavailable';
                     }
-                
+
                     return { apartment, priceText };
                 } catch (error) {
                     console.error(`Error fetching price range for apartment ${apartment.apartment_id}:`, error);
                     return { apartment, priceText: 'Price unavailable' };
-                }                
+                }
             }));
 
             for (const { apartment, priceText } of listingsWithPrices) {
@@ -92,8 +92,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 const boxDetailsButton = document.createElement("button");
                 boxDetailsButton.textContent = "VIEW UNITS";
                 boxDetailsButton.classList.add("plus-jakarta-sans");
+
+                const userStatus = document.body.dataset.userStatus;
+                console.log("User status is:", userStatus);
+                console.log("Redirecting to:", `../pages/${userStatus}-apartment-details.php?apartment_id=${apartmentId}`);
                 boxDetailsButton.addEventListener("click", function () {
-                    window.location.href = `../pages/apartment-details.php?apartment_id=${apartmentId}`;
+                    if (userStatus === "admin" || userStatus === "user" || userStatus === "tenant") {
+                        window.location.href = `../pages/${userStatus}-apartment-details.php?apartment_id=${apartmentId}`;
+                    } else {
+                        window.location.href = `../pages/apartment-details.php?apartment_id=${apartmentId}`;
+                    }
                 });
 
                 listingsContainer.appendChild(box);
