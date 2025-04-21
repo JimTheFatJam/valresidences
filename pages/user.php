@@ -34,7 +34,7 @@
     <div class="content-container">
         <div class="left-content-container">
             <div class="user-navigation-logo">
-                <button onclick="location.href='../pages/index.php'">
+                <button onclick="location.href='../pages/user-view-listings.php'">
                     <span class="logo-font">Val</span>
                     <span class="logo-font"><br>Residences</span>
                 </button>
@@ -44,14 +44,14 @@
             <div class="user-navigation">
                 <button class="scroll-button" data-target="#application-status">Application Status</button>
                 <button class="scroll-button" data-target="#contact-landlord">Contact Landlord</button>
-                <button class="scroll-button" data-target="#request-maintenance">Request Maintenance</button>
             </div>
         </div>
 
         <div class="right-content-container">
             <div class="navigation-bar">
                 <div class="nav-links">
-                    <button class="plus-jakarta-sans" onclick="location.href=''">MANAGE ACCOUNT</button>
+                    <button class="plus-jakarta-sans" onclick="location.href='../pages/user-view-listings.php'">VIEW LISTINGS</button>
+                    <button class="plus-jakarta-sans" onclick="location.href='../pages/user.php'">USER DASHBOARD</button>
                     <button class="plus-jakarta-sans" onclick="location.href='../backend/logout.php'">LOGOUT</button>
                 </div>
             </div>
@@ -80,15 +80,6 @@
                 <div class="management-section" id="contact-landlord">
                     <div class="section-header">
                         <h5 class="plus-jakarta-sans">CONTACT LANDLORD</h5>
-                    </div>
-                    <div class="section-body">
-                        
-                    </div>
-                </div>
-
-                <div class="management-section" id="request-maintenance">
-                    <div class="section-header">
-                        <h5 class="plus-jakarta-sans">REQUEST MAINTENANCE</h5>
                     </div>
                     <div class="section-body">
                         

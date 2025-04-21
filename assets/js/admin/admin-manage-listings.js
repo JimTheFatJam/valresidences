@@ -110,8 +110,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <th>Pet Friendly</th>
                                 <th>Lease</th>
                                 <th>Rent</th>
-                                <th>Deposit</th>
                                 <th>Advance</th>
+                                <th>Deposit</th>
                                 <th>Available</th>
                                 <th>Furnished</th>
                             </tr>
@@ -133,8 +133,8 @@ document.addEventListener("DOMContentLoaded", function () {
                             <td>${unit.pet_friendly == 1 ? 'Yes' : 'No'}</td>
                             <td>${unit.lease_term} ${unit.lease_term == 1 ? 'yr.' : 'yrs.'}</td>
                             <td>Php ${parseFloat(unit.rent_price).toLocaleString("en-PH", { minimumFractionDigits: 2 })}</td>
-                            <td>${unit.month_deposit} ${unit.month_deposit == 1 ? 'mo.' : 'mos.'}</td>
                             <td>${unit.month_advance} ${unit.month_advance == 1 ? 'mo.' : 'mos.'}</td>
+                            <td>${unit.month_deposit} ${unit.month_deposit == 1 ? 'mo.' : 'mos.'}</td>
                             <td>${unit.availability_status}</td>
                             <td>${unit.furnished_status}</td>
                         </tr>

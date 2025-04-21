@@ -12,6 +12,7 @@ function openAddUnitPopup(apartmentId) {
     button.innerHTML = "SUBMIT";
     button.id = "submitNewUnit";
     button.setAttribute("onclick", `submitNewUnit(${apartmentId})`);
+    document.getElementById("unitNumber").disabled = false;
 
     // Always enable the Add‑submit button (undo any prior disable)
     button.disabled = false;
@@ -87,6 +88,7 @@ function openEditUnitPopup(unitId) {
     const button     = document.querySelector(".add-unit-button-container button");
     const imageContainer = document.getElementById("previewUnitImages");
     document.querySelector('#addUnitPopup .close_button').setAttribute('onclick', 'closeEditUnitPopup()');
+    document.getElementById("unitNumber").disabled = true;
 
     popupTitle.innerHTML = "EDIT UNIT";
     button.innerHTML     = "SAVE";
@@ -337,16 +339,20 @@ function submitNewUnit(apartmentId) {
             inputs.forEach(input => input.disabled = true);
         }
     }).done(function (data) {
-        alert(data.message);
         isLoading = false;
         submitButton.innerHTML = "SUBMIT";
         submitButton.disabled = false;
         inputs.forEach(input => input.disabled = false);
-        $(".error-message").remove();
-        $(".addUnitForm input, .addUnitForm select").removeClass("error-border").val("");
-        $("#previewUnitImages").empty();
-        document.getElementById("previewUnitImages").style.display = "none";
-        location.reload();
+    
+        alert(data.message);
+    
+        if (data.status === "success") {
+            $(".error-message").remove();
+            $(".addUnitForm input, .addUnitForm select").removeClass("error-border").val("");
+            $("#previewUnitImages").empty();
+            document.getElementById("previewUnitImages").style.display = "none";
+            location.reload(); // Only reload if success
+        }
     }).fail(function (jqXHR, textStatus, errorThrown) {
         alert("Request failed: " + textStatus + " - " + errorThrown);
         isLoading = false;

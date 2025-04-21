@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $sql = "UPDATE apartment_listings SET subdivision_address = ?, address = ?, apartment_type = ?, map_address = ? WHERE apartment_id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ssssi", $subdivisionAddress, $address, $type, $mapURL, $apartmentId);
-    
+
     if ($stmt->execute()) {
         // Handle image uploads (delete old images, if necessary, and insert new ones)
         if ($images && !empty($images['name'][0])) {  // If new images are uploaded
@@ -42,16 +42,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Insert new images into apartment_images table
             foreach ($images['tmp_name'] as $key => $tmpName) {
-                $fileName = "apartment" . $apartmentId . "." . ($key + 1) . ".jpg";  // Name format
-                $filePath = "../uploads/apartment_images/" . $fileName;
+                $extension = strtolower(pathinfo($images['name'][$key], PATHINFO_EXTENSION)); // Get original extension
+                $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif']; // Define allowed extensions
 
-                // Move file from temp location to desired directory
-                if (move_uploaded_file($tmpName, $filePath)) {
-                    $insertSql = "INSERT INTO apartment_images (apartment_id, file_link) VALUES (?, ?)";
-                    $insertStmt = $conn->prepare($insertSql);
-                    $fileLink = "/uploads/apartment_images/" . $fileName;
-                    $insertStmt->bind_param("is", $apartmentId, $fileLink);
-                    $insertStmt->execute();
+                // Validate file extension
+                if (in_array($extension, $allowedExtensions)) {
+                    $fileName = "apartment" . $apartmentId . "." . ($key + 1) . "." . $extension; // Use dynamic extension
+                    $filePath = "../uploads/apartment_images/" . $fileName;
+
+                    // Move file from temp location to desired directory
+                    if (move_uploaded_file($tmpName, $filePath)) {
+                        // Prepare and execute SQL insert
+                        $insertSql = "INSERT INTO apartment_images (apartment_id, file_link) VALUES (?, ?)";
+                        $insertStmt = $conn->prepare($insertSql);
+                        $fileLink = "/uploads/apartment_images/" . $fileName;
+                        $insertStmt->bind_param("is", $apartmentId, $fileLink);
+                        if (!$insertStmt->execute()) {
+                            // Handle database insert error
+                            echo "Error inserting image into database: " . $insertStmt->error;
+                        }
+                    } else {
+                        // Handle file upload error
+                        echo "Error uploading file: " . $images['name'][$key];
+                    }
+                } else {
+                    // Handle invalid file type
+                    echo "Invalid file type: " . $images['name'][$key];
                 }
             }
         }

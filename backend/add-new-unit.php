@@ -20,6 +20,22 @@ try {
     $petFriendlyBool = $_POST['petFriendlyBool'];
     $balconyBool = $_POST['balconyBool'];
 
+    // Check if the unit number already exists under the same apartment
+    $checkStmt = $conn->prepare("SELECT unit_id FROM apartment_units WHERE apartment_id = ? AND unit_number = ?");
+    $checkStmt->bind_param("ii", $apartmentId, $unitNumber);
+    $checkStmt->execute();
+    $checkStmt->store_result();
+
+    if ($checkStmt->num_rows > 0) {
+        echo json_encode([
+            "status" => "error",
+            "message" => "Unit number already exists in this apartment."
+        ]);
+        $checkStmt->close();
+        exit;
+    }
+    $checkStmt->close();
+
     // 2. Insert into apartment_listings
     $stmt = $conn->prepare("INSERT INTO apartment_units (
         apartment_id,
@@ -40,7 +56,8 @@ try {
         created_at,
         updated_at
     ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW())");
-    $stmt->bind_param("iiidiiiiiidiiss",
+    $stmt->bind_param(
+        "iiidiiiiiidiiss",
         $apartmentId,
         $unitNumber,
         $floorCount,

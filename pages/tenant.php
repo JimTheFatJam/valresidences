@@ -34,7 +34,7 @@
     <div class="content-container">
         <div class="left-content-container">
             <div class="user-navigation-logo">
-                <button onclick="location.href='../pages/index.php'">
+                <button onclick="location.href='../pages/tenant-view-listings.php'">
                     <span class="logo-font">Val</span>
                     <span class="logo-font"><br>Residences</span>
                 </button>
@@ -43,7 +43,6 @@
             <!-- Tenant Functions -->
             <div class="user-navigation">
                 <button class="scroll-button" data-target="#lease-details">Lease Details</button>
-                <button class="scroll-button" data-target="#payment-methods">Payment Methods</button>
                 <button class="scroll-button" data-target="#request-maintenance">Request Maintenance</button>
                 <button class="scroll-button" data-target="#contact-landlord">Contact Landlord</button>
             </div>
@@ -52,7 +51,8 @@
         <div class="right-content-container">
             <div class="navigation-bar">
                 <div class="nav-links">
-                    <button class="plus-jakarta-sans" onclick="location.href=''">MANAGE ACCOUNT</button>
+                    <button class="plus-jakarta-sans" onclick="location.href='../pages/tenant-view-listings.php'">VIEW LISTINGS</button>
+                    <button class="plus-jakarta-sans" onclick="location.href='../pages/tenant.php'">TENANT DASHBOARD</button>
                     <button class="plus-jakarta-sans" onclick="location.href='../backend/logout.php'">LOGOUT</button>
                 </div>
             </div>
@@ -72,15 +72,6 @@
                 <div class="management-section" id="lease-details">
                     <div class="section-header">
                         <h5 class="plus-jakarta-sans">LEASE DETAILS</h5>
-                    </div>
-                    <div class="section-body">
-                        
-                    </div>
-                </div>
-
-                <div class="management-section" id="payment-methods">
-                    <div class="section-header">
-                        <h5 class="plus-jakarta-sans">PAYMENT METHODS</h5>
                     </div>
                     <div class="section-body">
                         

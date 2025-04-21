@@ -20,6 +20,30 @@
 </head>
 
 <body>
+    <!-- Dark Overlay -->
+    <div id="popupOverlay" class="overlay"></div>
+
+    <!-- Inquire Unit -->
+    <div id="unitInquiryPopup" class="unit-inquiry-popup">
+        <img class="close_button" src="../assets/icons/close_button.svg" onclick="closeInquireUnitPopup()"
+            alt="close_button">
+        <h2 class="plus-jakarta-sans-bold">UNIT INQUIRY</h2>
+        <div class="unitInquiryForm">
+            <label for="unitInquiryUnit" id="unitInquiryUnitLabel">Unit</label>
+            <input type="text" id="unitInquiryUnit" required disabled>
+
+            <label for="unitInquiryEmail" id="unitInquiryEmailLabel">Email</label>
+            <input type="email" id="unitInquiryEmail" placeholder="Enter email" required>
+
+            <label for="unitInquiryUnitMessage" id="unitInquiryUnitMessageLabel">Inquiry</label>
+            <textarea id="unitInquiryUnitMessage" placeholder="Enter message" required></textarea>
+
+            <div class="unit-inquiry-button-container">
+                <button class="plus-jakarta-sans" id="submitUnitInquiry">SUBMIT</button>
+            </div>
+        </div>
+    </div>
+
     <?php
     include_once("included-files/header.php");
     ?>

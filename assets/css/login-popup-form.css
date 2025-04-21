@@ -100,7 +100,7 @@
 
 .signup-text {
     text-align: center;
-    margin-top: 15px;
+    margin-top: 1rem;
     font-size: 0.8rem;
 }
 
@@ -111,6 +111,13 @@
 
 .signup-text a:hover {
     text-decoration: underline;
+}
+
+.login-alert {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: red;
 }
 
 .login-password-container {

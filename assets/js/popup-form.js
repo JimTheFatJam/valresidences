@@ -2,6 +2,7 @@ function openLoginPopup() {
     if (isLoading) return;
     document.getElementById("loginPopup").style.display = "block";
     document.getElementById("popupOverlay").style.display = "block";
+    document.querySelector(".login-alert")?.remove();
 }
 
 function closeLoginPopup() {

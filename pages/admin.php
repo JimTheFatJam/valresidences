@@ -83,8 +83,10 @@
         <div class="addApartmentForm">
             <div class="functions">
                 <div class="left-side">
-                    <label for="apartmentSubdivisionAddress" id="apartmentSubdivisionAddressLabel">Subdivision Address</label>
-                    <input type="text" id="apartmentSubdivisionAddress" placeholder="Enter subdivision address" required>
+                    <label for="apartmentSubdivisionAddress" id="apartmentSubdivisionAddressLabel">Subdivision
+                        Address</label>
+                    <input type="text" id="apartmentSubdivisionAddress" placeholder="Enter subdivision address"
+                        required>
 
                     <label for="apartmentAddress" id="apartmentAddressLabel">Address</label>
                     <input type="text" id="apartmentAddress" placeholder="Enter address" required>
@@ -106,10 +108,10 @@
                 <button class="plus-jakarta-sans" id="submitNewApartment" onclick="submitNewApartment()">SUBMIT</button>
             </div>
         </div>
-     </div>
+    </div>
 
     <!-- Add Unit Popup -->
-     <div id="addUnitPopup" class="add-unit-popup">
+    <div id="addUnitPopup" class="add-unit-popup">
         <img class="close_button" src="../assets/icons/close_button.svg" onclick="closeAddUnitPopup()"
             alt="close_button">
         <h2 class="plus-jakarta-sans-bold">ADD UNIT</h2>
@@ -119,10 +121,11 @@
                     <div class="function-group">
                         <label for="unitNumber" id="unitNumberLabel">Unit</label>
                         <input type="number" id="unitNumber" placeholder="Enter unit number" min="1" step="1" required>
-                    
+
                         <label for="bedroomCount" id="bedroomCountLabel">Bedrooms</label>
-                        <input type="number" id="bedroomCount" placeholder="Enter number of bedrooms" min="1" step="1" required>
-                    
+                        <input type="number" id="bedroomCount" placeholder="Enter number of bedrooms" min="1" step="1"
+                            required>
+
                         <label for="parkingSpaceBool" id="parkingSpaceBoolLabel">Parking Space</label>
                         <select id="parkingSpaceBool" required>
                             <option value="" disabled selected hidden>Select an option</option>
@@ -132,7 +135,7 @@
 
                         <label for="rentPrice" id="rentPriceLabel">Rent Price</label>
                         <input type="number" id="rentPrice" placeholder="Enter rent price" min="0" step="0.01" required>
-                    
+
                         <label for="availabilityStatus" id="availabilityStatusLabel">Availability Status</label>
                         <select id="availabilityStatus" required>
                             <option value="" disabled selected hidden>Select an option</option>
@@ -144,11 +147,13 @@
 
                     <div class="function-group">
                         <label for="floorCount" id="floorCountLabel">Floors</label>
-                        <input type="number" id="floorCount" placeholder="Enter number of floors" min="1" step="1" required>
+                        <input type="number" id="floorCount" placeholder="Enter number of floors" min="1" step="1"
+                            required>
 
                         <label for="tbCount" id="tbCountLabel">T&B</label>
-                        <input type="number" id="tbCount" placeholder="Enter number of toilets and baths" min="1" step="1" required>
-                    
+                        <input type="number" id="tbCount" placeholder="Enter number of toilets and baths" min="1"
+                            step="1" required>
+
                         <label for="petFriendlyBool" id="petFriendlyBoolLabel">Pet Friendly</label>
                         <select id="petFriendlyBool" required>
                             <option value="" disabled selected hidden>Select an option</option>
@@ -157,8 +162,9 @@
                         </select>
 
                         <label for="monthAdvance" id="monthAdvanceLabel">Month Advance</label>
-                        <input type="number" id="monthAdvance" placeholder="Enter number of months" min="1" step="1" required>
-                    
+                        <input type="number" id="monthAdvance" placeholder="Enter number of months" min="1" step="1"
+                            required>
+
                         <label for="furnishingStatus" id="furnishingStatusLabel">Furnishing Status</label>
                         <select id="furnishingStatus" required>
                             <option value="" disabled selected hidden>Select an option</option>
@@ -170,8 +176,9 @@
 
                     <div class="function-group">
                         <label for="livingArea" id="livingAreaLabel">Living Area (sqm)</label>
-                        <input type="number" id="livingArea" placeholder="Enter living area" min="0" step="0.01" required>
-                    
+                        <input type="number" id="livingArea" placeholder="Enter living area" min="0" step="0.01"
+                            required>
+
                         <label for="balconyBool" id="balconyBoolLabel">Balcony</label>
                         <select id="balconyBool" required>
                             <option value="" disabled selected hidden>Select an option</option>
@@ -183,7 +190,8 @@
                         <input type="number" id="leaseTerm" placeholder="Enter lease term" min="1" step="1" required>
 
                         <label for="monthDeposit" id="monthDepositLabel">Month Deposit</label>
-                        <input type="number" id="monthDeposit" placeholder="Enter number of months" min="1" step="1" required>
+                        <input type="number" id="monthDeposit" placeholder="Enter number of months" min="1" step="1"
+                            required>
                     </div>
                 </div>
                 <div class="right-side">
@@ -197,7 +205,7 @@
                 <button class="plus-jakarta-sans" id="submitNewUnit">SUBMIT</button>
             </div>
         </div>
-     </div>
+    </div>
 
     <!-- Tenant Announcements Popup -->
     <div id="tenantAnnouncementPopup" class="tenant-announcement-popup">
@@ -212,7 +220,8 @@
             <textarea id="tenantMessage" placeholder="Enter message" required></textarea>
 
             <div class="tenant-button-container">
-                <button class="plus-jakarta-sans" id="submitTenantAnnouncement" onclick="sendTenantAnnouncement()">SUBMIT</button>
+                <button class="plus-jakarta-sans" id="submitTenantAnnouncement"
+                    onclick="sendTenantAnnouncement()">SUBMIT</button>
             </div>
         </div>
     </div>
@@ -230,7 +239,8 @@
             <textarea id="vacancyMessage" placeholder="Enter message" required></textarea>
 
             <div class="vacancy-button-container">
-                <button class="plus-jakarta-sans" id="submitSubscriberAnnouncement" onclick="sendVacancyAnnouncement()">SUBMIT</button>
+                <button class="plus-jakarta-sans" id="submitSubscriberAnnouncement"
+                    onclick="sendVacancyAnnouncement()">SUBMIT</button>
             </div>
         </div>
     </div>
@@ -241,7 +251,7 @@
     <div class="content-container">
         <div class="left-content-container">
             <div class="user-navigation-logo">
-                <button onclick="location.href='../pages/index.php'">
+                <button onclick="location.href='../pages/admin-view-listings.php'">
                     <span class="logo-font">Val</span>
                     <span class="logo-font"><br>Residences</span>
                 </button>
@@ -259,7 +269,9 @@
         <div class="right-content-container">
             <div class="navigation-bar">
                 <div class="nav-links">
-                    <button class="plus-jakarta-sans" onclick="location.href=''">MANAGE ACCOUNT</button>
+                    <button class="plus-jakarta-sans" onclick="location.href='../pages/admin-view-listings.php'">VIEW
+                        LISTINGS</button>
+                    <button class="plus-jakarta-sans" onclick="location.href='../pages/admin.php'">ADMIN CENTER</button>
                     <button class="plus-jakarta-sans" onclick="location.href='../backend/logout.php'">LOGOUT</button>
                 </div>
             </div>
@@ -289,7 +301,7 @@
                             );">
                                 <div class="inner-circle">
                                     <h2><?= htmlspecialchars(string: $availableUnits); ?></h2>
-                                    <p>Available Units</p>
+                                    <p>Available <?= $availableUnits == 1 ? 'Unit' : 'Units' ?></p>
                                 </div>
                             </div>
 
@@ -333,8 +345,10 @@
                         <h5 class="plus-jakarta-sans">SEND ANNOUNCEMENTS</h5>
                     </div>
                     <div class="send-announcements">
-                        <button class="plus-jakarta-sans" onclick="openTenantAnnouncementPopup()">Tenant Announcement</button>
-                        <button class="plus-jakarta-sans" onclick="openVacancyAnnouncementPopup()">Vacancy Alert</button>
+                        <button class="plus-jakarta-sans" onclick="openTenantAnnouncementPopup()">Tenant
+                            Announcement</button>
+                        <button class="plus-jakarta-sans" onclick="openVacancyAnnouncementPopup()">Vacancy
+                            Alert</button>
                     </div>
                 </div>
             </div>

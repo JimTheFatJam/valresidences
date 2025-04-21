@@ -69,10 +69,12 @@ document.addEventListener("DOMContentLoaded", async function () {
             const inquireButton = document.createElement("button");
             inquireButton.textContent = "INQUIRE UNIT";
             inquireButton.classList.add("plus-jakarta-sans");
+            inquireButton.setAttribute("onclick", `openInquireUnitPopup(${unit.unit_id})`);
 
             const applyButton = document.createElement("button");
             applyButton.textContent = "APPLY NOW";
             applyButton.classList.add("plus-jakarta-sans");
+            applyButton.setAttribute("onclick", `openApplyUnitPopup(${unit.unit_id})`);
 
             unitButtons.appendChild(inquireButton);
             unitButtons.appendChild(applyButton);
@@ -130,3 +132,159 @@ document.addEventListener("DOMContentLoaded", async function () {
         unitsContainer.innerHTML = "<p>Error fetching apartment units.</p>";
     }
 });
+
+
+// INQUIRE UNIT FUNCTIONS
+
+function openInquireUnitPopup(unitId) {
+    console.log(`Inquiring unit with ID: ${unitId}`);
+
+    // Show popup and overlay
+    document.getElementById("unitInquiryPopup").style.display = "block";
+    document.getElementById("popupOverlay").style.display = "block";
+    document.getElementById("unitInquiryUnit").disabled = true;
+
+    // Fetch apartment_id, unit_number, and subdivision_address
+    fetch('../backend/fetch-unit-info.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ unitId: unitId })
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                const unitText = `${data.subdivision_address} Unit ${data.unit_number}`;
+                const input = document.getElementById("unitInquiryUnit");
+                input.value = unitText;
+                document.getElementById("submitUnitInquiry").onclick = () => submitUnitInquiry(data.unit_id);
+            } else {
+                console.error("Failed to fetch unit info:", data.message);
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+        });
+}
+
+function closeInquireUnitPopup() {
+    if (isLoading) return;
+    document.getElementById("unitInquiryPopup").style.display = "none";
+    document.getElementById("popupOverlay").style.display = "none";
+
+    $(".error-message").remove();
+    $("#unitInquiryUnit, #unitInquiryEmail, #unitInquiryUnitMessage").removeClass("error-border").val("");
+}
+
+document.getElementById("popupOverlay").addEventListener("click", function () {
+    if (isLoading) return;
+    closeInquireUnitPopup();
+});
+
+// SUBMIT UNIT INQUIRY
+
+function submitUnitInquiry(unitId) {
+    console.log(`Submit inquiry for unit ID: ${unitId}`);
+
+    let fields = [
+        { id: "unitInquiryUnit", label: "unitInquiryUnitLabel" },
+        { id: "unitInquiryEmail", label: "unitInquiryEmailLabel" },
+        { id: "unitInquiryUnitMessage", label: "unitInquiryUnitMessageLabel" },
+    ];
+
+    let isFieldEmpty = false;
+    let submitButton = document.getElementById("submitUnitInquiry");
+    let inputs = document.querySelectorAll(".unitInquiryForm input, .unitInquiryForm textarea");
+
+    const unit = document.getElementById("unitInquiryUnit").value.trim();
+    const email = document.getElementById("unitInquiryEmail").value.trim();
+    const message = document.getElementById("unitInquiryUnitMessage").value.trim();
+
+    // Remove existing error indicators
+    $(".error-message").remove();
+    fields.forEach(field => $("#" + field.id).removeClass("error-border"));
+
+    // Validate fields dynamically
+    fields.forEach(field => {
+        let input = document.getElementById(field.id).value.trim();
+        if (input === "") {
+            $("#" + field.label).append('<span class="error-message"> * Required</span>');
+            $("#" + field.id).addClass("error-border");
+            isFieldEmpty = true;
+        }
+    });
+
+    if (isFieldEmpty) return;
+
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    if (!emailRegex.test(email)) {
+        alert("Please enter a valid email address with a correct domain (e.g., example@mail.com)");
+        return;
+    }
+
+    console.log("Sending Unit Inquiry:", unit, email, message);
+
+    let isLoading = false;  // Define isLoading here to avoid errors
+
+    $.ajax({
+        method: "POST",
+        url: "../backend/send-unit-inquiry.php",
+        data: { unitId: unitId, subject: unit, email: email, message: message },
+        dataType: "json",
+        beforeSend: function () {
+            isLoading = true;
+            submitButton.innerHTML = `<div class="spinner"></div>`;
+            submitButton.disabled = true;
+            inputs.forEach(input => input.disabled = true);
+        },
+        success: function (data) {
+            alert(data.message);
+            isLoading = false;
+            submitButton.innerHTML = "SUBMIT";
+            submitButton.disabled = false;
+            inputs.forEach(input => input.disabled = false);
+            document.getElementById("unitInquiryUnit").disabled = true;
+            $(".error-message").remove();
+            $("#unitInquiryEmail, #unitInquiryUnitMessage").removeClass("error-border").val("");
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert("Request failed: " + textStatus + " - " + errorThrown);
+            isLoading = false;
+            console.error(jqXHR.responseText);
+            submitButton.innerHTML = "SUBMIT";
+            submitButton.disabled = false;
+            inputs.forEach(input => input.disabled = false);
+        }
+    });
+}
+
+
+// APPLY UNIT FUNCTIONS
+
+function openApplyUnitPopup(unitId) {
+    console.log(`Apply for unit with ID: ${unitId}`);
+
+    if (!isUserLoggedIn()) {
+        openLoginPopup();
+
+        const existingReason = document.getElementById("login-reason-message");
+        if (existingReason) existingReason.remove();
+
+        const loginForm = document.querySelector("#loginPopup form");
+        const loginAlert = document.createElement("p");
+        loginAlert.className = "login-alert";
+        loginAlert.textContent = "You need to log in to apply for a unit.";
+
+        loginForm.insertBefore(loginAlert, loginForm.querySelector(".signup-text"));
+
+        return;
+    }
+
+    console.log("Proceeding with unit application.");
+}
+
+function isUserLoggedIn() {
+    return !!document.cookie.match('session_id=');
+}

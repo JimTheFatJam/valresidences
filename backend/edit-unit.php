@@ -56,7 +56,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         WHERE unit_id = ?";
 
     $stmt = $conn->prepare($updateSql);
-    $stmt->bind_param("iidiiiiiidiissi", 
+    $stmt->bind_param(
+        "iidiiiiiidiissi",
         $unitNumber,
         $floorCount,
         $livingArea,
@@ -98,16 +99,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Step 4: Insert new images
             foreach ($images['tmp_name'] as $key => $tmpName) {
-                $fileName = "apartment{$apartmentId}unit{$unitNumber}." . ($key + 1) . ".jpg";  // Name format
-                $filePath = "../uploads/unit_images/" . $fileName;
+                // Get the file extension
+                $fileExtension = strtolower(pathinfo($images['name'][$key], PATHINFO_EXTENSION));
 
-                // Move file from temp location to desired directory
-                if (move_uploaded_file($tmpName, $filePath)) {
-                    $insertSql = "INSERT INTO unit_images (apartment_id, unit_number, file_link) VALUES (?, ?, ?)";
-                    $insertStmt = $conn->prepare($insertSql);
-                    $fileLink = "/uploads/unit_images/" . $fileName;
-                    $insertStmt->bind_param("iis", $apartmentId, $unitNumber, $fileLink);
-                    $insertStmt->execute();
+                // Allowed file types
+                $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+
+                // Check if the file extension is allowed
+                if (in_array($fileExtension, $allowedExtensions)) {
+                    $fileName = "apartment{$apartmentId}unit{$unitNumber}." . ($key + 1) . ".$fileExtension";  // Name format
+                    $filePath = "../uploads/unit_images/" . $fileName;
+
+                    // Move file from temp location to desired directory
+                    if (move_uploaded_file($tmpName, $filePath)) {
+                        $insertSql = "INSERT INTO unit_images (apartment_id, unit_number, file_link) VALUES (?, ?, ?)";
+                        $insertStmt = $conn->prepare($insertSql);
+                        $fileLink = "/uploads/unit_images/" . $fileName;
+                        $insertStmt->bind_param("iis", $apartmentId, $unitNumber, $fileLink);
+                        $insertStmt->execute();
+                    }
+                } else {
+                    // Handle unsupported file type if needed
+                    echo "Unsupported file type: $fileExtension";
                 }
             }
         }
