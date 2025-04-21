@@ -34,7 +34,7 @@ $userStatus = $_SESSION['status'];
 
 </head>
 
-<body data-user-status="<?= htmlspecialchars($_SESSION['status'] ?? '') ?>">
+<body data-user-status="user">
     <!-- Dark Overlay -->
     <div id="popupOverlay" class="overlay"></div>
 
