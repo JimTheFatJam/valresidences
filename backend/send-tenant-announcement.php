@@ -32,18 +32,18 @@ if ($conn->connect_error) {
     exit;
 }
 
-// GET SUBSCRIBER EMAILS FOR NOW, CHANGE TO TENANT EMAILS LATER
-$sql = "SELECT email FROM subscriber_emails";
+// TENANT EMAILS
+$sql = "SELECT user_email FROM login_users WHERE user_status = 'TENANT'";
 $result = $conn->query($sql);
 
 if ($result->num_rows === 0) {
-    echo json_encode(["result" => -1, "message" => "No subscribers found."]);
+    echo json_encode(["result" => -1, "message" => "No emails found."]);
     exit;
 }
 
 $emails = [];
 while ($row = $result->fetch_assoc()) {
-    $emails[] = $row['email'];
+    $emails[] = $row['user_email'];
 }
 $conn->close();
 
@@ -66,7 +66,7 @@ try {
     $mail->Body    = $messageBody;
 
     $mail->send();
-    echo json_encode(["result" => 1, "message" => "Vacancy announcement sent successfully!"]);
+    echo json_encode(["result" => 1, "message" => "Tenant announcement sent successfully!"]);
 } catch (Exception $e) {
     error_log("Failed to send email: " . $mail->ErrorInfo);
     echo json_encode(["result" => -1, "message" => "Failed to send announcement."]);

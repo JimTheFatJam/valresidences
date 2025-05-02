@@ -23,6 +23,7 @@
     <script src="../assets/js/admin/admin-manage-listings-functions.js" defer></script>
     <script src="../assets/js/admin/admin-image-functions.js" defer></script>
     <script src="../assets/js/admin/admin-manage-units-functions.js" defer></script>
+    <script src="../assets/js/admin/admin-manage-tenants.js" defer></script>
 </head>
 
 <body>
@@ -312,11 +313,6 @@
                                 <p><?= htmlspecialchars($unitsReserved); ?> Reserved</p>
                             </div>
                         </div>
-
-                        <div class="right-dashboard">
-                            <div class="tenantApplicationCount"></div>
-                            <div class="maintenanceRequestCount"></div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -335,7 +331,7 @@
                     <div class="section-header">
                         <h5 class="plus-jakarta-sans">MANAGE TENANTS</h5>
                     </div>
-                    <div class="manage-tenants">
+                    <div class="manage-tenants" id="manage-tenants">
 
                     </div>
                 </div>

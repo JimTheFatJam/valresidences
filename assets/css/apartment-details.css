@@ -106,7 +106,7 @@
     grid-template-rows: repeat(3, 1fr);
 }
 
-/* UNIT INQUIRY */
+/* UNIT INQUIRY AND APPLY */
 
 .overlay {
     display: none;
@@ -121,7 +121,8 @@
     z-index: 999;
 }
 
-.unit-inquiry-popup {
+.unit-inquiry-popup,
+.unit-apply-popup {
     display: none;
     position: fixed;
     top: 50%;
@@ -135,7 +136,8 @@
     z-index: 1000;
 }
 
-.unit-inquiry-popup .close_button {
+.unit-inquiry-popup .close_button,
+.unit-apply-popup .close_button {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -146,7 +148,8 @@
 
 /* Input fields */
 .unit-inquiry-popup input,
-.unit-inquiry-popup textarea {
+.unit-inquiry-popup textarea,
+.unit-apply-popup input {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
@@ -164,27 +167,31 @@
 }
 
 .unit-inquiry-popup input::placeholder,
-.unit-inquiry-popup textarea::placeholder {
+.unit-inquiry-popup textarea::placeholder,
+.unit-apply-popup input::placeholder {
     font-family: "Sen", serif;
     font-weight: 400;
     color: #AEAEAE;
 }
 
 /* Center the heading */
-.unit-inquiry-popup h2 {
+.unit-inquiry-popup h2,
+.unit-apply-popup h2 {
     text-align: center;
     margin-bottom: 1.3rem;
 }
 
 /* Button container */
-.unit-inquiry-button-container {
+.unit-inquiry-button-container,
+.unit-apply-button-container {
     width: 100%;
     display: flex;
     justify-content: center;
     margin-top: 20px;
 }
 
-.unit-inquiry-popup button {
+.unit-inquiry-popup button,
+.unit-apply-popup button {
     width: 60%;
     height: 2.5rem;
     background: #323232;
@@ -195,11 +202,13 @@
     transition: 300ms ease;
 }
 
-.unit-inquiry-popupbutton:hover {
+.unit-inquiry-popupbutton:hover,
+.unit-apply-popupbutton:hover {
     background-color: #292929;
 }
 
-.unit-inquiry-popup button:active {
+.unit-inquiry-popup button:active,
+.unit-apply-popup button:active {
     background-color: #202020;
 }
 

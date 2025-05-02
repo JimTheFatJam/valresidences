@@ -43,7 +43,6 @@
             <!-- Tenant Functions -->
             <div class="user-navigation">
                 <button class="scroll-button" data-target="#lease-details">Lease Details</button>
-                <button class="scroll-button" data-target="#request-maintenance">Request Maintenance</button>
                 <button class="scroll-button" data-target="#contact-landlord">Contact Landlord</button>
             </div>
         </div>
@@ -72,15 +71,6 @@
                 <div class="management-section" id="lease-details">
                     <div class="section-header">
                         <h5 class="plus-jakarta-sans">LEASE DETAILS</h5>
-                    </div>
-                    <div class="section-body">
-                        
-                    </div>
-                </div>
-
-                <div class="management-section" id="request-maintenance">
-                    <div class="section-header">
-                        <h5 class="plus-jakarta-sans">REQUST MAINTENANCE</h5>
                     </div>
                     <div class="section-body">
                         

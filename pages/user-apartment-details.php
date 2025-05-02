@@ -34,7 +34,7 @@ $userStatus = $_SESSION['status'];
 
 </head>
 
-<body data-user-status="user">
+<body data-user-status="user" data-user-email="<?= htmlspecialchars($email); ?>">
     <!-- Dark Overlay -->
     <div id="popupOverlay" class="overlay"></div>
 
@@ -48,13 +48,31 @@ $userStatus = $_SESSION['status'];
             <input type="text" id="unitInquiryUnit" required disabled>
 
             <label for="unitInquiryEmail" id="unitInquiryEmailLabel">Email</label>
-            <input type="email" id="unitInquiryEmail" placeholder="Enter email" required>
+            <input type="email" id="unitInquiryEmail" placeholder="Enter email" required disabled>
 
             <label for="unitInquiryUnitMessage" id="unitInquiryUnitMessageLabel">Inquiry</label>
             <textarea id="unitInquiryUnitMessage" placeholder="Enter message" required></textarea>
 
             <div class="unit-inquiry-button-container">
                 <button class="plus-jakarta-sans" id="submitUnitInquiry">SUBMIT</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Apply Unit -->
+    <div id="unitApplyPopup" class="unit-apply-popup">
+        <img class="close_button" src="../assets/icons/close_button.svg" onclick="closeApplyUnitPopup()"
+            alt="close_button">
+        <h2 class="plus-jakarta-sans-bold">UNIT APPLICATION</h2>
+        <div class="unitApplyForm">
+            <label for="unitApplyUnit" id="unitApplyUnitLabel">Unit</label>
+            <input type="text" id="unitApplyUnit" required disabled>
+
+            <label for="unitApplyEmail" id="unitApplyEmailLabel">Email</label>
+            <input type="email" id="unitApplyEmail" placeholder="Enter email" required disabled>
+
+            <div class="unit-apply-button-container">
+                <button class="plus-jakarta-sans" id="submitUnitApply">SUBMIT</button>
             </div>
         </div>
     </div>

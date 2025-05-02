@@ -11,7 +11,7 @@ function closeTenantAnnouncementPopup() {
     document.getElementById("popupOverlay").style.display = "none";
 
     $(".error-message").remove();
-    $("").removeClass("error-border").val("");
+    $("#tenantSubject, #tenantMessage").removeClass("error-border").val("");
 }
 
 function openVacancyAnnouncementPopup() {
