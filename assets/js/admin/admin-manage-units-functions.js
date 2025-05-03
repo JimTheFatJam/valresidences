@@ -238,6 +238,8 @@ document.getElementById("popupOverlay").addEventListener("click", function () {
 
 function submitNewUnit(apartmentId) {
     console.log(`Submit new unit for apartment ID: ${apartmentId}`);
+    console.log("Test: Parking Space:", document.getElementById("parkingSpaceBool").value);
+
     let fields = [
         { id: "unitNumber", label: "unitNumberLabel" },
         { id: "bedroomCount", label: "bedroomCountLabel" },
@@ -272,9 +274,9 @@ function submitNewUnit(apartmentId) {
     const availabilityStatus = document.getElementById("availabilityStatus").value.trim();
     const furnishingStatus = document.getElementById("furnishingStatus").value.trim();
 
-    const parkingSpaceBool = document.getElementById("parkingSpaceBool").value.trim() === "Yes" ? 1 : 0;
-    const petFriendlyBool = document.getElementById("petFriendlyBool").value.trim() === "Yes" ? 1 : 0;
-    const balconyBool = document.getElementById("balconyBool").value.trim() === "Yes" ? 1 : 0;
+    const parkingSpaceBool = parseInt(document.getElementById("parkingSpaceBool").value.trim());
+    const petFriendlyBool = document.getElementById("petFriendlyBool").value.trim();
+    const balconyBool = document.getElementById("balconyBool").value.trim();
 
     const images = document.getElementById("unitImages").files;
 
