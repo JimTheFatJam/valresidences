@@ -204,3 +204,64 @@
         /* Adjust text size */
     }
 }
+
+/* FORGOT PASSWORD POPUP STYLES */
+.forgot-password-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    width: 400px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.forgot-password-popup form {
+    display: flex;
+    flex-direction: column;
+}
+
+.forgot-password-popup input {
+    margin: 10px 0;
+    padding: 8px;
+    width: 100%;
+    height: 2.5rem;
+    font-family: "Sen", serif;
+    font-weight: 400;
+    font-size: 0.9rem;
+    border: none;
+    outline: 1px solid #AEAEAE;
+}
+
+.forgot-password-popup input::placeholder {
+    font-family: "Sen", serif;
+    font-weight: 400;
+    color: #AEAEAE;
+}
+
+.forgot-password-popup h2 {
+    text-align: center;
+    margin-bottom: 1.3rem;
+}
+
+.forgot-password-popup button {
+    height: 2.5rem;
+    background: #323232;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 300ms ease;
+}
+
+.forgot-password-popup button:hover {
+    background-color: #292929;
+}
+
+.forgot-password-popup button:active {
+    background-color: #202020;
+}

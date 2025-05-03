@@ -1,0 +1,130 @@
+/* CONTACT LANDLORD */
+
+.contact-landlord-container,
+.application-status-container,
+.lease-details-container {
+    display: flex;
+    background: #E8E8E8;
+    padding: 1rem 1rem;
+}
+
+.contactLandLordForm {
+    width: 100%;
+}
+
+.contactLandLordForm label {
+    margin: 0;
+    color: #555;
+}
+
+.contactLandLordForm input,
+.contactLandLordForm textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    font-family: "Sen", serif;
+    font-weight: 400;
+    font-size: 0.9rem;
+    border: none;
+    outline: 1px solid #AEAEAE;
+    height: 2.5rem;
+}
+
+.contactLandLordForm textarea {
+    resize: vertical;
+    height: 5rem;
+}
+
+.contactLandLordForm input::placeholder,
+.contactLandLordForm textarea::placeholder {
+    font-family: "Sen", serif;
+    font-weight: 400;
+    color: #AEAEAE;
+}
+
+.contact-landlord-button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.contactLandLordForm button {
+    width: 60%;
+    height: 2.5rem;
+    background: #606060;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    transition: 300ms ease;
+}
+
+.contactLandLordForm button:hover {
+    background-color: #505050;
+}
+
+.contactLandLordForm button:active {
+    background-color: #404040;
+}
+
+/* Disabled styles */
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+input:disabled,
+textarea:disabled {
+    background-color: #f2f2f2;
+    cursor: not-allowed;
+}
+
+/* VIEW APPLICATION STATUS */
+
+.lease-details-container {
+    flex-direction: column;
+}
+
+.lease-details-container table,
+.application-status-container table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+    table-layout: auto;
+}
+
+.lease-details-container th,
+.lease-details-container td,
+.application-status-container th,
+.application-status-container td {
+    padding: 4px 6px;
+    text-align: center;
+    border: 1px solid #ccc;
+    background-color: white;
+    white-space: nowrap;
+}
+
+.lease-details-container th,
+.application-status-container th {
+    background-color: #f2f2f2;
+    font-weight: 600;
+}
+
+.unit-table td.status-pending {
+    background-color: #FFCC66;
+    font-weight: 600;
+}
+
+.unit-table td.status-approved {
+    background-color: #8ED973;
+    font-weight: 600;
+}
+
+.unit-table td.status-declined {
+    background-color: #FF5050;
+    font-weight: 600;
+}
+
+/* VIEW LEASE DETAILS */
+

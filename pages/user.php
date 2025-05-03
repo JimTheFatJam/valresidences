@@ -12,10 +12,14 @@
     ?>
 
     <!-- CSS Files -->
+    <link rel="stylesheet" href="../assets/css/user-tenant.css">
+
     <!-- JavaScript Files (Relative Paths + defer for Performance) -->
+    <script src="../assets/js/user-message-function.js" defer></script>
+    <script src="../assets/js/user/view-application-status.js" defer></script>
 </head>
 
-<body>
+<body data-user-status="User">
 
     <?php
     session_start();
@@ -42,16 +46,18 @@
 
             <!-- User Functions -->
             <div class="user-navigation">
-                <button class="scroll-button" data-target="#application-status">Application Status</button>
-                <button class="scroll-button" data-target="#contact-landlord">Contact Landlord</button>
+                <button class="scroll-button" data-target="#management-section-1">Application Status</button>
+                <button class="scroll-button" data-target="#management-section-2">Contact Landlord</button>
             </div>
         </div>
 
         <div class="right-content-container">
             <div class="navigation-bar">
                 <div class="nav-links">
-                    <button class="plus-jakarta-sans" onclick="location.href='../pages/user-view-listings.php'">VIEW LISTINGS</button>
-                    <button class="plus-jakarta-sans" onclick="location.href='../pages/user.php'">USER DASHBOARD</button>
+                    <button class="plus-jakarta-sans" onclick="location.href='../pages/user-view-listings.php'">VIEW
+                        LISTINGS</button>
+                    <button class="plus-jakarta-sans" onclick="location.href='../pages/user.php'">USER
+                        DASHBOARD</button>
                     <button class="plus-jakarta-sans" onclick="location.href='../backend/logout.php'">LOGOUT</button>
                 </div>
             </div>
@@ -68,21 +74,36 @@
             </div>
 
             <div class="main-content" id="main-content">
-                <div class="management-section" id="application-status">
+                <div class="management-section" id="management-section-1">
                     <div class="section-header">
                         <h5 class="plus-jakarta-sans">APPLICATION STATUS</h5>
                     </div>
-                    <div class="section-body">
+                    <div class="application-status-container">
 
                     </div>
                 </div>
 
-                <div class="management-section" id="contact-landlord">
+                <div class="management-section" id="management-section-2">
                     <div class="section-header">
                         <h5 class="plus-jakarta-sans">CONTACT LANDLORD</h5>
                     </div>
-                    <div class="section-body">
-                        
+                    <div class="contact-landlord-container">
+                        <div class="contactLandLordForm">
+                            <label for="contactEmail" id="contactEmailLabel">Email</label>
+                            <input type="text" id="contactEmail" value="<?php echo htmlspecialchars($email); ?>"
+                                required disabled>
+
+                            <label for="contactSubject" id="contactSubjectLabel">Subject</label>
+                            <input type="text" id="contactSubject" placeholder="Enter subject" required>
+
+                            <label for="contactMessage" id="contactMessageLabel">Message</label>
+                            <textarea id="contactMessage" placeholder="Enter message" required></textarea>
+
+                            <div class="contact-landlord-button-container">
+                                <button class="plus-jakarta-sans" id="submitContactLandlord"
+                                    onclick="sendContactLandlord()">SUBMIT</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

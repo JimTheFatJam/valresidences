@@ -41,7 +41,7 @@
     height: 2.5rem;
 }
 
-.tenant-announcement-popup textarea
+.tenant-announcement-popup textarea,
 .vacancy-announcement-popup textarea {
     resize: vertical;
     height: 5rem;

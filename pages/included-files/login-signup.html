@@ -3,8 +3,7 @@
 
 <!-- Login Popup -->
 <div id="loginPopup" class="login-popup">
-    <img class="close_button" src="../assets/icons/close_button.svg" onclick="closeLoginPopup()"
-        alt="close_button">
+    <img class="close_button" src="../assets/icons/close_button.svg" onclick="closeLoginPopup()" alt="close_button">
     <h2 class="plus-jakarta-sans-bold">LOGIN</h2>
     <form>
         <label for="loginEmail" id="loginEmailLabel">Email</label>
@@ -16,7 +15,7 @@
             <img src="../assets/icons/eye_icon_crossed.svg" id="toggleLoginPassword" alt="Toggle Password">
         </div>
 
-        <a href="#" class="forgot-password">Forgot password?</a>
+        <a href="#" class="forgot-password" onclick="closeLoginPopup(); openForgotPasswordPopup(); return false;">Forgot password?</a>
 
         <button class="plus-jakarta-sans" type="submit" id="submit-login">LOGIN</button>
 
@@ -27,8 +26,7 @@
 
 <!-- Sign Up Popup -->
 <div id="signUpPopup" class="sign-up-popup">
-    <img class="close_button" src="../assets/icons/close_button.svg" onclick="closeSignUpPopup()"
-        alt="close_button">
+    <img class="close_button" src="../assets/icons/close_button.svg" onclick="closeSignUpPopup()" alt="close_button">
     <h2 class="plus-jakarta-sans-bold">SIGN UP</h2>
     <form id="registerForm">
         <div class="signup-body">
@@ -47,8 +45,7 @@
                 <label for="signUpPassword" id="signUpPasswordLabel">Password</label>
                 <div class="sign-up-password-container">
                     <input type="password" id="signUpPassword" placeholder="Enter your password" required>
-                    <img src="../assets/icons/eye_icon_crossed.svg" id="toggleSignUpPassword"
-                        alt="Toggle Password">
+                    <img src="../assets/icons/eye_icon_crossed.svg" id="toggleSignUpPassword" alt="Toggle Password">
                 </div>
 
                 <div class="signup-password-requirements">
@@ -66,5 +63,23 @@
         <div class="signup-button-container">
             <button class="plus-jakarta-sans" type="submit" id="submit-register">SUBMIT</button>
         </div>
+    </form>
+</div>
+
+<!-- Forgot Password Popup -->
+<div id="forgotPasswordPopup" class="forgot-password-popup">
+    <img class="close_button" src="../assets/icons/close_button.svg" onclick="closeForgotPasswordPopup()"
+        alt="close_button">
+    <h2 class="plus-jakarta-sans-bold">RESET PASSWORD</h2>
+    <form id="forgotPasswordForm">
+        <label for="resetEmail" id="resetEmailLabel">Email</label>
+        <input type="email" id="resetEmail" placeholder="Enter your registered email" required>
+
+        <button class="plus-jakarta-sans" type="submit" id="submit-reset">SEND RESET LINK</button>
+
+        <p class="signup-text">
+            Remembered your password?
+            <a href="#" onclick="closeForgotPasswordPopup(); openLoginPopup(); return false;">Back to Login</a>
+        </p>
     </form>
 </div>

@@ -35,8 +35,25 @@ function closeSignUpPopup() {
     });
 }
 
+function openForgotPasswordPopup() {
+    if (isLoading) return;
+    document.getElementById("forgotPasswordPopup").style.display = "block";
+    document.getElementById("popupOverlay").style.display = "block";
+}
+
+function closeForgotPasswordPopup() {
+    if (isLoading) return;
+    document.getElementById("forgotPasswordPopup").style.display = "none";
+    document.getElementById("popupOverlay").style.display = "none";
+    // Remove existing error indicators
+    $(".error-message").remove(); // Remove error messages
+    $("#resetEmail").removeClass("error-border").val(""); // Remove border and clear inputs
+}
+
+
 document.getElementById("popupOverlay").addEventListener("click", function () {
     if (isLoading) return;
     closeLoginPopup();
     closeSignUpPopup();
+    closeForgotPasswordPopup();
 });

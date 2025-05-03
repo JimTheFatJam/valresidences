@@ -12,10 +12,14 @@
     ?>
 
     <!-- CSS Files -->
+    <link rel="stylesheet" href="../assets/css/user-tenant.css">
+
     <!-- JavaScript Files (Relative Paths + defer for Performance) -->
+    <script src="../assets/js/user-message-function.js" defer></script>
+    <script src="../assets/js/tenant/view-lease-details.js" defer></script>
 </head>
 
-<body>
+<body data-user-status="Tenant">
 
     <?php
     session_start();
@@ -50,8 +54,10 @@
         <div class="right-content-container">
             <div class="navigation-bar">
                 <div class="nav-links">
-                    <button class="plus-jakarta-sans" onclick="location.href='../pages/tenant-view-listings.php'">VIEW LISTINGS</button>
-                    <button class="plus-jakarta-sans" onclick="location.href='../pages/tenant.php'">TENANT DASHBOARD</button>
+                    <button class="plus-jakarta-sans" onclick="location.href='../pages/tenant-view-listings.php'">VIEW
+                        LISTINGS</button>
+                    <button class="plus-jakarta-sans" onclick="location.href='../pages/tenant.php'">TENANT
+                        DASHBOARD</button>
                     <button class="plus-jakarta-sans" onclick="location.href='../backend/logout.php'">LOGOUT</button>
                 </div>
             </div>
@@ -72,8 +78,8 @@
                     <div class="section-header">
                         <h5 class="plus-jakarta-sans">LEASE DETAILS</h5>
                     </div>
-                    <div class="section-body">
-                        
+                    <div class="lease-details-container">
+
                     </div>
                 </div>
 
@@ -81,8 +87,23 @@
                     <div class="section-header">
                         <h5 class="plus-jakarta-sans">CONTANCT LANDLORD</h5>
                     </div>
-                    <div class="section-body">
-                        
+                    <div class="contact-landlord-container">
+                        <div class="contactLandLordForm">
+                            <label for="contactEmail" id="contactEmailLabel">Email</label>
+                            <input type="text" id="contactEmail" value="<?php echo htmlspecialchars($email); ?>"
+                                required disabled>
+
+                            <label for="contactSubject" id="contactSubjectLabel">Subject</label>
+                            <input type="text" id="contactSubject" placeholder="Enter subject" required>
+
+                            <label for="contactMessage" id="contactMessageLabel">Message</label>
+                            <textarea id="contactMessage" placeholder="Enter message" required></textarea>
+
+                            <div class="contact-landlord-button-container">
+                                <button class="plus-jakarta-sans" id="submitContactLandlord"
+                                    onclick="sendContactLandlord()">SUBMIT</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
