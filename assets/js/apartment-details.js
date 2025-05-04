@@ -137,6 +137,9 @@ document.addEventListener("DOMContentLoaded", async function () {
                         img.alt = `Unit ${unit.unit_number}`;
                         img.style.width = "100%";
                         img.style.height = "auto";
+                        img.onclick = function() {
+                            openModal(this);
+                        };
                         unitImageContainer.appendChild(img);
                     });
                 } else {

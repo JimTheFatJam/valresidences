@@ -59,6 +59,9 @@ document.addEventListener("DOMContentLoaded", function () {
                         const img = document.createElement("img");
                         img.src = `${images[0]}`; // Show the first image
                         img.alt = `${apartment.apartment_type} - ${apartment.subdivision_address}`;
+                        img.onclick = function() {
+                            openModal(this);
+                        };
                         boxImage.appendChild(img);
                     }
                 } catch (error) {
