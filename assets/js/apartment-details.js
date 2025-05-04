@@ -282,7 +282,7 @@ function submitUnitInquiry(unitId) {
             submitButton.innerHTML = "SUBMIT";
             submitButton.disabled = false;
             document.getElementById("unitInquiryUnit").disabled = true;
-            document.getElementById("unitInquiryEmail").disabled = true;
+            document.getElementById("unitInquiryEmail").disabled = false;
             document.getElementById("unitInquiryUnitMessage").disabled = false;
             $(".error-message").remove();
             $("#unitInquiryUnitMessage").removeClass("error-border").val("");
